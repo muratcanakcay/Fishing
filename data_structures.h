@@ -14,6 +14,8 @@ typedef struct
 {
     int penguin_owner;  // This is 0 if no penguin is present in the ice_floe, or it is set to the player_no which the penguin belongs to
     int fish; // This is the number of fish  present in the ice_floe.
+    int rows;
+    int columns;
 } ice_floe;
 
 struct GS

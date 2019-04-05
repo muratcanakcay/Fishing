@@ -17,7 +17,7 @@ player * player_generator()
 
 
     // Create the player array
-
+    
     player * players;
     players = (player *) malloc((no_of_players + 1) * sizeof(player));
 
