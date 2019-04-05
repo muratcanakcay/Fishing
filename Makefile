@@ -13,7 +13,6 @@ clean :
 	rm *.o
 	rm main_loop_draft
 
-
 # data_structures.o: data_structures.c
 # 	cc -c data_structures.c
 
