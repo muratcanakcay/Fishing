@@ -9,6 +9,10 @@ player_generator.o: player_generator.c data_structures.h
 map_creator.o: map_creator.c data_structures.h
 	cc -c map_creator.c
 
+clean :
+	rm *.o
+	rm main_loop_draft
+
 
 # data_structures.o: data_structures.c
 # 	cc -c data_structures.c
