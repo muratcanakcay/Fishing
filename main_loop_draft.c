@@ -1,13 +1,13 @@
 #include <stdio.h>
-// #include "movement_possibility_check.h"
-// #include "floe_availability_check.h"
-// #include "destination_validity_check.h"
-// #include "move_penguin.h"
-// #include "map_creator.h"
 
 #include "data_structures.h"
 #include "player_generator.h"
 #include "map_creator.h"
+// #include "movement_possibility_check.h"
+// #include "floe_availability_check.h"
+// #include "destination_validity_check.h"
+// #include "move_penguin.h"
+
 
 //* This will eventually become the main loop of the game where each player (who has a move that they can make) is asked to pick a penguin and choose a destination cell for that penguin. Then the legality of that move is checked and if the move is legal the penguin is taken to the new cell, the map is updated and the scoreboard is updated. Then the loop repeats for the next player.
 
@@ -18,11 +18,9 @@
 int main()
 {
     // // **** INITIALIZATION PHASE **** //
-    //
-    // // Call for the map_creator function that will ask for rows and columns and randomly populate the cells with fish.
-    // map_creator();
 
-    // Call for the player_generation function that will ask the users to input the player data (number of players and player IDs for each player) and create the players array containing the player structures containing the player destination_validity_check
+
+    // Call for the player_generator function that will ask the users to input the player data (number of players and player IDs for each player) and create the players array containing the player structures containing the player data. When that's done call for the map_creator function that will ask for rows and columns, create the map array containing the ice_floe structures and randomly populate the ice_floes with fish, finally returning the ready-to-play map.
 
     player * players = player_generator();
     ice_floe ** map = map_creator();
@@ -42,7 +40,7 @@ int main()
 
     int columns = map[0][0].columns, rows = map[0][0].rows, c, r;
 
-    for (r = 0; r < rows; r++)  // this loop that prints the map will be redundant in the final program
+    for (r = 0; r < rows; r++)  // This loop prints the map
     {
         for (c = 0; c < columns; c++)
             printf("%d%d ", map[r][c].fish, map[r][c].penguin_owner);

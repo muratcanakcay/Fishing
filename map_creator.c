@@ -26,7 +26,8 @@ ice_floe ** map_creator ()
         scanf("%d", &c);
     } while (c < MIN_COLUMNS || c > MAX_COLUMNS);
 
-    // create map array
+    // Create map array and register the number of rows and columns
+
     ice_floe ** map = malloc(r*sizeof(ice_floe *));
     for(int i=0; i< r; i++) map[i] = malloc(c*sizeof(ice_floe));
 
@@ -44,7 +45,7 @@ ice_floe ** map_creator ()
             map[r][c].penguin_owner = 0;
         }
     }
-    return map;
+    return map; // Return the created map array to the main function.
 }
 
 int gen_random()
