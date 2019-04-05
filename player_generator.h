@@ -1,2 +1,4 @@
+// #include "data_structures.h"
+
 /* player_generator function declaration */
-int player_generator();
+player * player_generator();

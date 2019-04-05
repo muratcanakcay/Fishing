@@ -4,6 +4,8 @@
 // #include "destination_validity_check.h"
 // #include "move_penguin.h"
 // #include "map_creator.h"
+
+#include "data_structures.h"
 #include "player_generator.h"
 
 
@@ -24,9 +26,17 @@ int main()
     // map_creator();
 
     // Call for the player_generation function that will ask the users to input the player data (number of players and player IDs for each player) and create the players array containing the player structures containing the player destination_validity_check
-    player_generator();
 
-//
+    player * players = player_generator();
+
+    int player_no;
+    for (player_no = 1; player_no < players[0].player_no + 1; player_no++)
+    {
+        printf("Player %d's ID is %s: \n", player_no, players[player_no].player_ID);
+        printf("Player %d's No is %d: \n", player_no, players[player_no].player_no);
+        printf("Player %d's score is %d: \n", player_no, players[player_no].player_score);
+        printf("Player %d's movement %d: \n", player_no, players[player_no].movement_possible);
+    }
 //
 //
 //

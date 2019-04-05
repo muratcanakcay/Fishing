@@ -1,16 +1,9 @@
 #include <stdio.h>
-// #include <stdlib.h>
+#include <stdlib.h>
 #include <string.h>
+#include "data_structures.h"
 
-typedef struct
-{
-    char player_ID[30]; //Player's name
-    int player_no; // Player's number
-    int player_score; //Player's current score
-    int movement_possible; // 0 if player cannot move, 1 if it can (default value is 1 and it can be updated to 0 in the movement_possibility_check function)
-} player;
-
-int player_generator()
+player * player_generator()
 {
     int no_of_players, player_no, n = 0;
 
@@ -25,7 +18,10 @@ int player_generator()
 
     // Create the player array
 
-    player players[no_of_players + 1];
+    player * players;
+    players = (player *) malloc((no_of_players + 1) * sizeof(player));
+
+
     players[0].player_no = no_of_players;
     players[0].player_score = 0;
     players[0].movement_possible = 0;
@@ -49,15 +45,5 @@ int player_generator()
         } while (strlen(player_name) < 2 || strlen(player_name) > 30); // This needs attention. Whenonly enter is prepared how do we repeat the while loop?
         printf("\n");
     }
-
-    // This loop will be removed in the final code
-
-    for (player_no = 1; player_no < no_of_players + 1; player_no++)
-    {
-        printf("Player %d's ID is %s: \n", player_no, players[player_no].player_ID);
-        printf("Player %d's No is %d: \n", player_no, players[player_no].player_no);
-        printf("Player %d's score is %d: \n", player_no, players[player_no].player_score);
-        printf("Player %d's movement %d: \n", player_no, players[player_no].movement_possible);
-    }
-    return 0;
+    return players;
 }
