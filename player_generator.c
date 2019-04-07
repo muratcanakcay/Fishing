@@ -5,45 +5,49 @@
 
 player * player_generator()
 {
-    int no_of_players, player_no, n = 0;
+    int p = 2, n = 2; // DEBUG remove 2 from both p and n
 
+    // DEBUG Uncomment the following:
     // Ask for the number of players
 
-    do
-    {
-        printf("How many players will play the game? (1-9) : ");
-        scanf("%d", &no_of_players);
-    } while (no_of_players < 1 || no_of_players > 9);
+    // do
+    // {
+    //     printf("How many players will play the game? (1-9) : ");
+    //     scanf("%d", &n);
+    // } while (n < 1 || n > 9);
 
+    // do
+    // {
+    //     printf("How many penguins will each player have? (1-3) : ");
+    //     scanf("%d", &p);
+    // } while (p < 1 || p > 3);
 
-    // ** Create the player array.  This is the array used to hold the data for each player. The player 1's struct is placed at index# 1, player 2's struct at index#2, etc. The "player_no" variable stored in the struct at index #0 is used to keep the number of players who have run out of moves (it is updated (increased by 1) in the movement_possibility_check function if the function returns 0 for a player) ** //
+    // ** Create the player array.  This is the array used to hold the data for each player. The player 1's struct is placed at index# 1, player 2's struct at index#2, etc.  ** //
 
     player * players;
-    players = (player *) malloc((no_of_players + 1) * sizeof(player));
+    players = (player *) malloc((n + 1) * sizeof(player));
 
-    // Initialize the gamestate data
+    // Initialize the gamestate data. In index #0, the "player_no" variable is used to keep the total number of players, movement_possible variable to keep total number of players who have run out of moves (it is updated (increased by 1) in the movement_possibility_check function if the function returns 0 for a player, the player_score variable is used to keep the player_no of the current player and the player_ID variable is used to store the no of penguins each player has. This is a character array so the value of the integer is kept as a character.)
 
-    players[0].player_no = no_of_players;
-    players[0].player_score = 0;
+    players[0].player_ID[0] = p;
+    players[0].player_no = n;
     players[0].movement_possible = 0;
+    players[0].player_score = 2; // DEBUG make it 0
 
-    //Get the IDs for each player and populate the structs of each player with their individual data
+    // Get the IDs for each player and populate the structs of each player with their individual data
 
-    for (player_no = 1; player_no < no_of_players + 1; player_no++)
+    for (n = 1; n < players[0].player_no + 1; n++)
     {
-        char player_name[30];
-        int k;
+        char player_ID[30] = "PlayerPlayerPlayerPlayerPlayer"; // DEBUG remove "Player"
         do
         {
-            printf("Enter Player %d's ID (max. 30 characters): ", player_no);
-            k = scanf(" %s", player_name);
-            printf("%s: \n", player_name);
-            strcpy(players[player_no].player_ID, player_name);
-            players[player_no].player_no = player_no;
-            players[player_no].player_score = 0;
-            players[player_no].movement_possible = 1;
-        } while (strlen(player_name) < 2 || strlen(player_name) > 30); // This needs attention. When only enter is prepared how do we repeat the while loop?
-        printf("\n");
+            // printf("Enter Player %d's ID (max. 30 characters): ", n); DEBUG  uncomment
+            // scanf(" %s", player_ID); // DEBUG uncomment
+            strcpy(players[n].player_ID, player_ID);
+            players[n].player_no = n;
+            players[n].player_score = 0;
+            players[n].movement_possible = 1;
+        } while (strlen(player_ID) < 2 || strlen(player_ID) > 30); // This needs attention. When only enter is pressed how do we repeat the while loop?
     }
     return players;
 }

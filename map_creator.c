@@ -4,32 +4,36 @@
 #include <time.h>
 #include "data_structures.h"
 
-int gen_random();
-
-ice_floe ** map_creator ()
+ice_floe ** map_creator (player * players)
 {
     srand(time(NULL));
-    int MIN_ROWS = 5, MIN_COLUMNS = 5, MAX_ROWS = 40, MAX_COLUMNS = 40;
-    int r = 0, c = 0;
+    int MIN_ROWS = 5, MIN_COLUMNS = 5, MAX_ROWS = 35, MAX_COLUMNS = 35;
+    int i, r = 35, c = 35; // DEBUG remove definitions of r,c
 
+    // DEBUG uncomment the following:
     //* Ask the user for the dimensions of the board and create the map using random fish numbers.
 
-    do
-    {
-        printf("Enter the number of rows (5-40): ");
-        scanf("%d", &r);
-    } while (r < MIN_ROWS || r > MAX_ROWS);
+    // ALSO, HERE WILL BE ADDED SOME CONDITIONS DEPENDING ON THE NO OF PLAYERS
+    // AND NO OF PENGUINS (kept in player_no and player_ID fields of the struct
+    // at [0] index of the players array) SO THAT THE MAP CANNOT BE TOO SMALL
+    // FOR THE GIVEN NUMBERS.
 
-    do
-    {
-        printf("Enter the number of columns (5-40): ");
-        scanf("%d", &c);
-    } while (c < MIN_COLUMNS || c > MAX_COLUMNS);
+    // do
+    // {
+    //     printf("Enter the number of rows (%d-%d): ", MIN_ROWS, MAX_ROWS);
+    //     scanf("%d", &r);
+    // } while (r < MIN_ROWS || r > MAX_ROWS);
+    //
+    // do
+    // {
+    //     printf("Enter the number of columns (%d-%d): ", MIN_COLUMNS, MAX_COLUMNS);
+    //     scanf("%d", &c);
+    // } while (c < MIN_COLUMNS || c > MAX_COLUMNS);
 
     // Create map array and register the number of rows and columns
 
-    ice_floe ** map = malloc(r*sizeof(ice_floe *));
-    for(int i=0; i< r; i++) map[i] = malloc(c*sizeof(ice_floe));
+    ice_floe ** map = malloc(r * sizeof(ice_floe *));
+    for (i = 0; i < r; i++) map[i] = malloc(c * sizeof(ice_floe));
 
     map[0][0].rows = r;
     map[0][0].columns = c;
@@ -41,15 +45,11 @@ ice_floe ** map_creator ()
 
         for (c = 0; c < map[0][0].columns; c++)
         {
-            map[r][c].fish = gen_random() + 1;
+            map[r][c].fish = rand()%3; // DEBUG Make it %3 + 1
             map[r][c].penguin_owner = 0;
         }
     }
+    map[0][0].penguin_owner = 1; // DEBUG remove
+    map[0][1].penguin_owner = 2; // DEBUG remove
     return map; // Return the created map array to the main function.
-}
-
-int gen_random()
-{
-    int r = rand()%3;
-    return r;
 }
