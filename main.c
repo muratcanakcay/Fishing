@@ -4,6 +4,7 @@
 #include "player_generator.h"
 #include "map_creator.h"
 #include "print_map.h"
+#include "place_penguins.h"
 // #include "movement_possibility_check.h"
 // #include "floe_availability_check.h"
 // #include "destination_validity_check.h"
@@ -20,47 +21,13 @@ int main()
                             map_creator(GS.players)
                         };
 
-    print_map(GS);
+    // printf("how many turns the game will last (0 for unlimited)");
 
 
+    // **** PLACEMENT PHASE **** //
 
+    place_penguins(GS);
 
-
-
-
-
-    //*********DEBUG OUTPUT **************//
-
-    // int player_no;
-    // for (player_no = 1; player_no < GS.players[0].player_no + 1; player_no++)
-    // {
-    //     printf("Player %d's ID is %s: \n", player_no, GS.players[player_no].player_ID);
-    //     printf("Player %d's No is %d: \n", player_no, GS.players[player_no].player_no);
-    //     printf("Player %d's score is %d: \n", player_no, GS.players[player_no].player_score);
-    //     printf("Player %d's movement %d: \n", player_no, GS.players[player_no].movement_possible);
-    // }
-
-
-
-    // printf("Rows=%d Columns=%d\n ", GS.map[0][0].rows, GS.map[0][0].columns);
-
-    //*********DEBUG OUTPUT ENDS HERE **************//
-//
-//
-//
-    // printf("HOW MANY PENGUINS??????????????? and how many turns the game will last (0 for unlimited)");
-//
-//
-//
-//
-//
-//
-//     // **** PLACEMENT PHASE **** //
-//
-//
-//
-//
-//
 //     // **** MOVEMENT PHASE **** //
 //* Each player (who has a move that they can make) is asked to pick a penguin and choose a destination cell for that penguin. Then the legality of that move is checked and if the move is legal the penguin is taken to the new cell, the GS.map is updated and the scoreboard is updated. Then the loop repeats for the next player.
 

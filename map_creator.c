@@ -45,11 +45,9 @@ ice_floe ** map_creator (player * players)
 
         for (c = 0; c < map[0][0].columns; c++)
         {
-            map[r][c].fish = rand()%3; // DEBUG Make it %3 + 1
+            map[r][c].fish = rand()%3 + 1;
             map[r][c].penguin_owner = 0;
         }
     }
-    map[0][0].penguin_owner = 1; // DEBUG remove
-    map[0][1].penguin_owner = 2; // DEBUG remove
     return map; // Return the created map array to the main function.
 }

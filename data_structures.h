@@ -4,7 +4,7 @@
 
 typedef struct
 {
-    char player_ID[30]; //Player's name / No of penguins
+    char player_ID[30]; //Player's name / Total no of penguins
     int player_no; // Player's number / Total no of players
     int player_score; //Player's current score / Current player's no
     int movement_possible; // 0 if player cannot move, 1 if it can (default value is 1 and it can be updated to 0 in the movement_possibility_check function) / Total no of players who cannot move.

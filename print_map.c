@@ -5,9 +5,11 @@
 
 int print_map(struct GameState GS)
 {
-    int columns = GS.map[0][0].columns, rows = GS.map[0][0].rows, c, r;
+    int columns = GS.map[0][0].columns, rows = GS.map[0][0].rows, total_players = GS.players[0].player_no, c, r;
 
     system("clear");
+
+    // Print color numbers
     printf("\033[0;33m"); //Set the text to the color yellow
     printf("    ");
     for (c = 1; c < 10; c++)
@@ -21,27 +23,39 @@ int print_map(struct GameState GS)
 
     for (r = 0; r < rows; r++)
     {
+        // Print row numbers
         printf("\033[0;33m"); //Set the text to the color yellow
         if (r<9) printf("0%d_%c", r + 1, 124);
         else printf("%d_%c", r + 1, 124);
-        printf("\033[0m"); //Resets the text to default color
+        printf("\033[0m"); //Reset the text to default color
+
         for (c = 0; c < columns; c++)
+
+            // Print empty cell
             if (GS.map[r][c].fish == 0 && GS.map[r][c].penguin_owner == 00)
-                printf("   "); // empty cell
-            else if (GS.map[r][c].penguin_owner == GS.players[0].player_score) // current player's penguin
+                printf("   ");
+
+            // Print current player's penguin
+            else if (GS.map[r][c].penguin_owner == GS.players[0].player_score)
             {
-                printf("\033[1;33m"); //Set the text to the color yellow
+                printf("\033[1;33m"); //Set the text to the color bold yellow
                 printf("*%d ", GS.map[r][c].penguin_owner);
-                printf("\033[0m"); //Resets the text to default color
+                printf("\033[0m"); //Reset the text to default color
             }
-            else if (GS.map[r][c].penguin_owner !=0) // other players' penguins
+
+            // Print other players' penguins
+            else if (GS.map[r][c].penguin_owner !=0)
             {
-                printf("\033[1;34m"); //Set the text to the color blue
+                printf("\033[1;34m"); //Set the text to the color boldblue
                 printf("x%d ", GS.map[r][c].penguin_owner);
-                printf("\033[0m"); //Resets the text to default color
+                printf("\033[0m"); //Reset the text to default color
             }
-            else printf("%d%d ", GS.map[r][c].fish, GS.map[r][c].penguin_owner); // full cell
-        if (r < GS.players[0].player_no)
+
+            // Print untouched cell
+            else printf("%d%d ", GS.map[r][c].fish, GS.map[r][c].penguin_owner);
+
+        // Print scoreboard
+        if (r < total_players)
         {
             printf("%c ", 124);
             printf("%s ", GS.players[r+1].player_ID);
@@ -51,5 +65,5 @@ int print_map(struct GameState GS)
         }
         else printf("%c\n",124);
     }
-    printf("\n");
+    return 0;
 }
