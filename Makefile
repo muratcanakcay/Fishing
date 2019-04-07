@@ -1,7 +1,7 @@
-# all : main_loop_draft map_creator player_generation
+# all : main map_creator player_generation
 
-main: main_loop_draft.c player_generator.o map_creator.o print_map.o data_structures.h
-	cc -o penguins main_loop_draft.c player_generator.o map_creator.o print_map.o data_structures.h
+main: main.c player_generator.o map_creator.o print_map.o data_structures.h
+	cc -o penguins main.c player_generator.o map_creator.o print_map.o data_structures.h
 
 player_generator.o: player_generator.c data_structures.h
 	cc -c player_generator.c
