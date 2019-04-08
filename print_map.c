@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "data_structures.h"
 
-// This function uses the GS struct to print the map and the scoreboard.
+// This function uses the data stored in GS struct to print the map and the scoreboard.
 
 void print_map(struct GameState GS)
 {
@@ -38,7 +38,7 @@ void print_map(struct GameState GS)
             if (GS.map[r][c].fish == 0 && GS.map[r][c].penguin_owner == 00)
                 printf("   ");
 
-            // Print current player's penguin
+            // Print current_player's penguin
             else if (GS.map[r][c].penguin_owner == current_player)
             {
                 printf("\033[1;33m"); //Set the text to the color bold yellow
@@ -49,7 +49,7 @@ void print_map(struct GameState GS)
             // Print other players' penguins
             else if (GS.map[r][c].penguin_owner !=0)
             {
-                printf("\033[1;34m"); //Set the text to the color boldblue
+                printf("\033[1;34m"); //Set the text to the color bold blue
                 printf("x%d ", GS.map[r][c].penguin_owner);
                 printf("\033[0m"); //Reset the text to default color
             }
@@ -61,9 +61,13 @@ void print_map(struct GameState GS)
         if (r < total_players)
         {
             printf("%c ", 124);
+            if (GS.players[r+1].player_no == current_player)
+                printf("\033[1;33m"); // Print current_player's info in bold yellow on the scoreboard.
             printf("%s ", GS.players[r+1].player_ID);
             printf("%d ", GS.players[r+1].player_no);
             printf("%d ", GS.players[r+1].player_score);
+            if (GS.players[r+1].player_no == current_player)
+                printf("\033[0m");
             printf("%c\n", 124);
         }
         else printf("%c\n",124);

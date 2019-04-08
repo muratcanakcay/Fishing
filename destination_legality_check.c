@@ -1,10 +1,9 @@
 #include <stdio.h>
-
-
+#include "data_structures.h"
 
 //* This function checks if a selected penguing can move to a selected destination cell. It will check that the destination cell is unoccupied and has fish, it will check that the destination cell is on a straight line path from the current cell and finally it will check that there are no penguins or empty ice_floes on the way. If all conditions are met it will return 1. If any of the conditions are not met it will return 0. (It may return other values to report what prevents the move from being made - open to improvement)
 
-int destination_validity_check(int rows, int columns, ice_floe map[rows][columns], int selected_row, int selected_column, int destination_row, int destination_column)
+int destination_legality_check(struct GameState GS, int r, int c)
 {
     // First we check whether the destination cell is unoccupied and whether it has fish in it and if it is occupied or doesn't have fish we return 0.
 

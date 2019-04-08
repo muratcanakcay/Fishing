@@ -6,8 +6,7 @@
 
 int placement_legality_check(struct GameState GS, int r, int c)
 {
-    if (c == 0) return 0; // The player asked to re-enter the coordinates
-    else if (GS.map[r-1][c-1].penguin_owner != 0) return -1; // The cell is occupied
-    else if (GS.map[r-1][c-1].fish > 1) return -2; // There's more than 1 fish
+    if (GS.map[r][c].penguin_owner != 0) return -1; // The cell is occupied
+    else if (GS.map[r][c].fish > 1) return -2; // There's more than 1 fish
     else return 1; // The placement is legal
 }

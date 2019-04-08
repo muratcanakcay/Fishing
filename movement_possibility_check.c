@@ -1,39 +1,38 @@
 #include <stdio.h>
-#include <floe_availability_check.h>
+#include "data_structures.h"
+#include "floe_availability_check.h"
 
-//* This code fragment checks if a player has any penguens left which also make a legal move.
+// This function checks if a player has any penguens left which can move. The functions returns 1 if there's a penguin that can  move and returns 0 if not.
 
-//* Four variables are passed into this function rows, columns, map[rows][columns] - the 2-dimensional array holding the current state of the map and the player_no for which the check will be performed. The functions returns 1 if there's a penguin that can make a move, and returns 0 if not.
+// This function can be improved to return the coordinates of each penguin belonging to the player, and how many directions each penguin can move towards (0-4)
 
-//* This function can be improved to return the coordinates of each penguin belonging to the player, and how many directions each penguin can move towards (0-4)
-
-int movement_possibility_check(int rows, int columns, ice_floe map[rows][columns], player players[], int player_no)
+int movement_possibility_check(struct GameState GS, int player_to_check)
 {
-    //* First check if the player has been previously flagged as "cannot move". If it's already flagged return 0.
+    // Pull the gamestate values from GS into local variables
+    int rows = GS.map[0][0].data[0];
+    int columns = GS.map[0][0].data[1];
+    int r, c;
 
-    if (players[player_no].movement_possible == 0) return 0;
+    // First check if the player_to_check has been previously flagged as "cannot move". If it's already flagged return 0.
 
-    //* The player is not flagged previously but now check movement possibility for the current state of the game.
+    if (GS.players[player_to_check].movement_possible == 0) return 0;
 
-    //* Start a search iterating through all rows and columns
+    // If the player_to_check is not flagged, check movement possibility for the current state of the game.
 
-    for (int r = 0; r < rows; r++)
+    for (r = 0; r < rows; r++)
     {
-        for (int c = 0; c < columns; c++)
+        for (c = 0; c < columns; c++)
         {
-            //* If a penguin belonging to the player_no is found in the ice_floe (which is a struct) located at row r and column c, we check if that penguin can move, i.e. is there an available ice_floe it can move to at the cell up, down, left and right. This is best done by a function floe_availability_check.
+            // If a penguin belonging to player_to_check is found in the cell located at row r and column c, we check if that penguin can move, i.e. is there an available ice_floe it can move to - up, down, left or right. This is done by the function floe_availability_check. If the penguin can move then this function returns one and exits.
 
-            if (map[r][c].penguin_owner = player_no)
-            {
-                    //* if the floe has an adjacent available cell, that means a move is possible so a value of 1 is returned. If not the iteration on the map continues until either a penguin belonging to player_no located on an ice floe with availabe moves is found or the whole map is searched.
-
-                    if (floe_availability_check(rows, columns, map[rows][columns], r, c)) return 1;
-
-            }
+            if (GS.map[r][c].penguin_owner == player_to_check)
+                if (floe_availability_check(GS, r, c)) return 1;
         }
     }
-    //* If the whole map is searched and there's no penguin which can make a move then a 0 is returned by the function. The count of players that cannot move stored at index 0 of players[] array is increased by one, and the player is flagged as cannot move.
-    players[0].player_no++;
-    players[player_no].movement_possible = 0;
+
+    // If the whole map is searched and there's no penguin which can make a move then a 0 is returned by the function. The movement_possible field  of the player struct stored at index 0 of players array is increased by one (no of players that can't move) and the player is flagged as cannot move.
+
+    GS.players[0].movement_possible = GS.players[0].movement_possible + 1;
+    GS.players[player_to_check].movement_possible = 0;
     return 0;
 }
