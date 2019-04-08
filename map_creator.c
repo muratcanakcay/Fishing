@@ -8,10 +8,10 @@ ice_floe ** map_creator (player * players)
 {
     srand(time(NULL));
     int MIN_ROWS = 5, MIN_COLUMNS = 5, MAX_ROWS = 35, MAX_COLUMNS = 35;
-    int i, r = 35, c = 35; // DEBUG remove definitions of r,c
+    int i, rows, columns, r = 35, c = 35; // DEBUG remove definitions of r,c
 
     // DEBUG uncomment the following:
-    //* Ask the user for the dimensions of the board and create the map using random fish numbers.
+    // Ask the user for the dimensions of the board and create the map using random fish numbers.
 
     // ALSO, HERE WILL BE ADDED SOME CONDITIONS DEPENDING ON THE NO OF PLAYERS
     // AND NO OF PENGUINS (kept in player_no and player_ID fields of the struct
@@ -30,20 +30,20 @@ ice_floe ** map_creator (player * players)
     //     scanf("%d", &c);
     // } while (c < MIN_COLUMNS || c > MAX_COLUMNS);
 
-    // Create map array and register the number of rows and columns
+    // Create map array and register the number of rows and columns.
 
     ice_floe ** map = malloc(r * sizeof(ice_floe *));
     for (i = 0; i < r; i++) map[i] = malloc(c * sizeof(ice_floe));
 
-    map[0][0].rows = r;
-    map[0][0].columns = c;
+    rows = map[0][0].data[0] = r; // register the no of rows in map array
+    columns = map[0][0].data[1] = c; // register the no of columns in map array
 
-    //* Iterating through the row and columns we read values and pass them into their respective variables - fish or penguin_owner - in the ice_floe structures located in each cell of the  map array.
+    // Iterating through the row and columns we assign the values for fish (randomly between 1-3) and penguin_owner (0 for all cells) in the ice_floe structures located in each index of the map array.
 
-    for (r = 0; r < map[0][0].rows; r++)
+    for (r = 0; r < rows; r++)
     {
 
-        for (c = 0; c < map[0][0].columns; c++)
+        for (c = 0; c < columns; c++)
         {
             map[r][c].fish = rand()%3 + 1;
             map[r][c].penguin_owner = 0;

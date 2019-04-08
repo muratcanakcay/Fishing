@@ -7,29 +7,32 @@
 
 int place_penguins(struct GameState GS)
 {
-    int columns = GS.map[0][0].columns;
-    int rows = GS.map[0][0].rows;
+    // Pull the gamestate values from GS into local variables
+    int rows = GS.map[0][0].data[0];
+    int columns = GS.map[0][0].data[1];
     int total_players = GS.players[0].player_no;
     int total_penguins = (int)(GS.players[0].player_ID[0]);
-    int current_player, current_penguin, c, r, placement_legality = 1;
+    int current_player, current_penguin, r, c, placement_legality = 1;
+    int departure[2] = {0, 0}; // Initialize departure point of penguin to (0, 0) so that only arrival occurs in update_map function
 
+    // Ask each player to place their penguins in order.
     for (current_penguin = 1; current_penguin <= total_penguins; current_penguin++)
     {
         for (current_player = 1; current_player <= total_players; current_player++)
         {
-            GS.players[0].player_score = current_player; // Update current player in GS
+            GS.players[0].player_score = current_player; // Update current player in GS.
 
+            // Ask the current player for the coordinates to place the penguin
             do
             {
-
-
-                // Ask for the row# to place the penguin
+                // Ask for the row# to place the penguin.
                 do
                 {
                     print_map(GS);
 
-                    // If the previously selected ice floe is illegal inform the player
-                    if (placement_legality == -1) printf("That ice floe is already occpied!! Please enter other coordinates!");
+                    // If the selected ice floe is illegal or the player asked to re-enter the coordinates inform the player.
+                    if (placement_legality == 0) printf("You've asked to re-enter the coordinates.");
+                    if (placement_legality == -1) printf("That ice floe is already occupied!! Please enter other coordinates!");
                     if (placement_legality == -2) printf("That ice floe has more than one fish!! Please enter other coordinates!");
 
                     printf("\n%s please enter the coordinates of the ice floe to place your penguin #%d :\n", GS.players[current_player].player_ID, current_penguin);
@@ -37,22 +40,24 @@ int place_penguins(struct GameState GS)
                     scanf(" %d", &r);
                 } while (r < 1 || r > rows);
 
-                // Ask for the column# to place the penguin
+                // Ask for the column# to place the penguin.
                 do
                 {
                     print_map(GS);
-                    printf("\n%s please enter the coordinates of the ice floe to place your penguin #%d (Input 0 to re-enter Row#):\n", GS.players[current_player].player_ID, current_penguin);
+
+                    printf("\n%s please enter the coordinates of the ice floe to place your penguin #%d (Enter 0 to re-start):\n", GS.players[current_player].player_ID, current_penguin);
                     printf("Column# (1-%d) : ", columns);
                     scanf(" %d", &c);
                 } while (c < 0 || c > columns);
 
-            placement_legality = placement_legality_check(GS, r, c); // Check legality of the placement
+                // Check legality of the selected cell.
+                placement_legality = placement_legality_check(GS, r, c);
 
-        } while (c == 0 || placement_legality != 1); // If the player wishes to re-enter the coordinates or if the placement is illegal then ask for the coordinates again.
+            } while (placement_legality != 1); // If the player wishes to restart entering the coordinates or if the selected coordinates is illegal then ask for the coordinates again.
 
-        // Update the map using update_map function
-
-        update_map(GS, r, c, 1);
+        // Update the map using update_map function.
+        int arrival[2] = {r, c}; // Assign placement coordinates for penguin
+        update_map(GS, departure, arrival);
         }
     }
     return 0;

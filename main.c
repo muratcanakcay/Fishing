@@ -3,7 +3,6 @@
 #include "data_structures.h"
 #include "player_generator.h"
 #include "map_creator.h"
-#include "print_map.h"
 #include "place_penguins.h"
 // #include "movement_possibility_check.h"
 // #include "floe_availability_check.h"
@@ -12,23 +11,20 @@
 
 int main()
 {
-    // // **** INITIALIZATION PHASE **** //
+    // **** INITIALIZATION PHASE **** //
 
+    // Call for the player_generator function that will ask the users to input the player data (number of players, player IDs for each player and number of penguins) and create the players array containing the player structures containing the player data. When that's done call for the map_creator function that will ask for rows and columns, create the map array containing the ice_floe structures and randomly populate the ice_floes with fish, returning the ready-to-play map. Place both arrays in the GS struct.
 
-    // Call for the player_generator function that will ask the users to input the player data (number of players and player IDs for each player) and create the players array containing the player structures containing the player data. When that's done call for the map_creator function that will ask for rows and columns, create the map array containing the ice_floe structures and randomly populate the ice_floes with fish, returning the ready-to-play map. Place both arrays in the GS struct.
     struct GameState GS = {
                             player_generator(),
                             map_creator(GS.players)
                         };
-
-    // printf("how many turns the game will last (0 for unlimited)");
-
-
     // **** PLACEMENT PHASE **** //
 
     place_penguins(GS);
 
-//     // **** MOVEMENT PHASE **** //
+    // **** MOVEMENT PHASE **** //
+
 //* Each player (who has a move that they can make) is asked to pick a penguin and choose a destination cell for that penguin. Then the legality of that move is checked and if the move is legal the penguin is taken to the new cell, the GS.map is updated and the scoreboard is updated. Then the loop repeats for the next player.
 
 //* this loop requires several variables. The first is the player_no whose turn it is to play. The second is the "map" array and its dimensions so that the GS.map can be read and updated. The third is the "players" array so that the scoreboard can be updated.

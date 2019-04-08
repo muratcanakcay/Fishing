@@ -2,23 +2,26 @@
 #include <stdlib.h>
 #include "data_structures.h"
 
+// This function uses the GS struct to print the map and the scoreboard.
 
-int print_map(struct GameState GS)
+void print_map(struct GameState GS)
 {
-    int columns = GS.map[0][0].columns, rows = GS.map[0][0].rows, total_players = GS.players[0].player_no, c, r;
+    // Pull the gamestate values from GS into local variables
+    int rows = GS.map[0][0].data[0];
+    int columns = GS.map[0][0].data[1];
+    int current_player = GS.players[0].player_score;
+    int total_players = GS.players[0].player_no;
+    int c, r;
 
     system("clear");
 
-    // Print color numbers
+    // Print column numbers
     printf("\033[0;33m"); //Set the text to the color yellow
     printf("    ");
-    for (c = 1; c < 10; c++)
-        printf("0%d ", c);
-    for (c = 10; c < columns + 1; c++)
-        printf("%d ", c);
+    for (c = 1; c < 10; c++) printf("0%d ", c);
+    for (c = 10; c < columns + 1; c++) printf("%d ", c);
     printf("\n___");
-    for (c = 0; c < columns; c++)
-        printf("%c__", 124);
+    for (c = 0; c < columns; c++) printf("%c__", 124);
     printf("%c_\n", 124);
 
     for (r = 0; r < rows; r++)
@@ -36,7 +39,7 @@ int print_map(struct GameState GS)
                 printf("   ");
 
             // Print current player's penguin
-            else if (GS.map[r][c].penguin_owner == GS.players[0].player_score)
+            else if (GS.map[r][c].penguin_owner == current_player)
             {
                 printf("\033[1;33m"); //Set the text to the color bold yellow
                 printf("*%d ", GS.map[r][c].penguin_owner);
@@ -65,5 +68,4 @@ int print_map(struct GameState GS)
         }
         else printf("%c\n",124);
     }
-    return 0;
 }
