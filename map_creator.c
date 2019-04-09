@@ -8,7 +8,7 @@ ice_floe ** map_creator (player * players)
 {
     srand(time(NULL));
     int MIN_ROWS = 5, MIN_COLUMNS = 5, MAX_ROWS = 35, MAX_COLUMNS = 35;
-    int i, rows, columns, r = 35, c = 35; // DEBUG remove definitions of r,c
+    int i, rows, columns, r = 10, c = 10; // DEBUG remove definitions of r,c
 
     // DEBUG uncomment the following:
     // Ask the user for the dimensions of the board and create the map using random fish numbers.
