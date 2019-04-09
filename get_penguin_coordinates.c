@@ -49,6 +49,6 @@ void get_penguin_coordinates(struct GameState GS,  int * penguin_coordinates)
     } while (selection_legality != 1); // If the player wishes to restart entering the coordinates or if the selected coordinates is illegal then ask for the coordinates again.
 
     // Now the player has selected a penguin which belongs to him and which can move. We store the coordinates of the penguin and exit.
-    penguin_coordinates[0] = r;
-    penguin_coordinates[1] = c;
+    penguin_coordinates[0] = r-1;
+    penguin_coordinates[1] = c-1;
 }
