@@ -13,7 +13,7 @@ void print_map(GameState GS)
     int total_players = GS.players[0].player_no;
     int c, r;
 
-    // system("clear");
+    system("clear");
 
     // Print column numbers
     printf("\033[0;33m"); //Set the text to the color yellow
