@@ -4,14 +4,14 @@
 #include "update_map.h"
 #include "get_placement_coordinates.h"
 
-int place_penguins(struct GameState GS)
+int place_penguins(GameState GS)
 {
     // Pull the gamestate values from GS into local variables
     int total_players = GS.players[0].player_no;
     int total_penguins = (int)(GS.players[0].player_ID[0]);
     int current_player, current_penguin;
-    int dummy_coordinates[2] = {-1, -1}; // Initialize departure point of penguin to   (-1, -1) so that only arrival occurs in update_map function.
-    int placement_coordinates[2];
+    coordinates dummy_coordinates = {-1, -1}; /* Initialize departure point of penguin to (-1, -1) so that only arrival occurs in update_map function. */
+    coordinates placement_coordinates;
 
     // Ask each player to place their penguins in order.
     for (current_penguin = 1; current_penguin <= total_penguins; current_penguin++)
@@ -20,7 +20,7 @@ int place_penguins(struct GameState GS)
         {
             GS.players[0].player_score = current_player; // Update current_player in GS.
 
-            get_placement_coordinates(GS, placement_coordinates, current_penguin); // Get placement coordinates from the player.
+            get_placement_coordinates(GS, &placement_coordinates, current_penguin); // Get placement coordinates from the player.
 
         // Update the map using update_map function.
         update_map(GS, dummy_coordinates, placement_coordinates);

@@ -4,7 +4,7 @@
 
 // This function uses the data stored in GS struct to print the map and the scoreboard.
 
-void print_map(struct GameState GS)
+void print_map(GameState GS)
 {
     // Pull the gamestate values from GS into local variables
     int rows = GS.map[0][0].data[0];
@@ -13,7 +13,7 @@ void print_map(struct GameState GS)
     int total_players = GS.players[0].player_no;
     int c, r;
 
-    system("clear");
+    // system("clear");
 
     // Print column numbers
     printf("\033[0;33m"); //Set the text to the color yellow

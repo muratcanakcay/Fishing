@@ -4,7 +4,7 @@
 #include "print_map.h"
 #include "destination_legality_check.h"
 
-void get_destination_coordinates(struct GameState GS,  int* destination_coordinates, const int * penguin_coordinates)
+void get_destination_coordinates(GameState GS,  coordinates * destination_coordinates, coordinates penguin_coordinates)
 {
     // Pull the gamestate values from GS into local variables
     int rows = GS.map[0][0].data[0];
@@ -43,11 +43,15 @@ void get_destination_coordinates(struct GameState GS,  int* destination_coordina
 
         // Check legality of the destination cell or whether the player asked to restart entering the coordinates.
         if (c == 0) destination_legality = 0;
-        else destination_legality = destination_legality_check(GS, r-1, c-1, penguin_coordinates);
+        else
+        {
+            coordinates given_coordinates = {r-1, c-1};
+            destination_legality = destination_legality_check(GS, given_coordinates, penguin_coordinates);
+        }
 
     } while (destination_legality != 1); // If the player wishes to restart entering the coordinates or if the selected coordinates is illegal then ask for the coordinates again.
 
     // Now the player has selected a destination cell which is valid. We store the coordinates of the destination cell and exit.
-    destination_coordinates[0] = r-1;
-    destination_coordinates[1] = c-1;
+    destination_coordinates->r = r-1;
+    destination_coordinates->c = c-1;
 }
