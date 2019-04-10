@@ -4,7 +4,7 @@
 #include "print_map.h"
 #include "floe_availability_check.h"
 
-void get_penguin_coordinates(struct GameState GS,  int * penguin_coordinates)
+void get_penguin_coordinates(GameState GS,  coordinates * penguin_coordinates)
 {
     // Pull the gamestate values from GS into local variables
     int rows = GS.map[0][0].data[0];
@@ -49,6 +49,6 @@ void get_penguin_coordinates(struct GameState GS,  int * penguin_coordinates)
     } while (selection_legality != 1); // If the player wishes to restart entering the coordinates or if the selected coordinates is illegal then ask for the coordinates again.
 
     // Now the player has selected a penguin which belongs to him and which can move. We store the coordinates of the penguin and exit.
-    penguin_coordinates[0] = r-1;
-    penguin_coordinates[1] = c-1;
+    penguin_coordinates->r = r-1;
+    penguin_coordinates->c = c-1;
 }

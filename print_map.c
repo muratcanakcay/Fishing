@@ -4,7 +4,7 @@
 
 // This function uses the data stored in GS struct to print the map and the scoreboard.
 
-void print_map(struct GameState GS)
+void print_map(GameState GS)
 {
     // Pull the gamestate values from GS into local variables
     int rows = GS.map[0][0].data[0];
