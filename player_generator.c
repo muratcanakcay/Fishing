@@ -45,7 +45,7 @@ player * player_generator()
         do
         {
             printf("Enter Player %d's ID (max. 30 characters): ", n);
-            scanf(" %s", player_ID);
+            scanf(" %s", player_ID); 
             strcpy(players[n].player_ID, player_ID);
             players[n].player_no = n;
             players[n].player_score = 0;
