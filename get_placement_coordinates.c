@@ -6,7 +6,7 @@
 
 // This function asks the player to enter coordinates to place a penguin. It only accepts valid placements.
 
-void get_placement_coordinates(struct GameState GS, int * placement_coordinates, int current_penguin)
+void get_placement_coordinates(GameState GS, coordinates * placement_coordinates, int current_penguin)
 {
     // Pull the gamestate values from GS into local variables
     int rows = GS.map[0][0].data[0];
@@ -48,7 +48,7 @@ void get_placement_coordinates(struct GameState GS, int * placement_coordinates,
 
     } while (placement_legality != 1); // If the player wishes to restart entering the coordinates or if the selected coordinates is illegal then ask for the coordinates again.
 
-    // Store the selectd coordinates.
-    placement_coordinates[0] = r-1;
-    placement_coordinates[1] = c-1;
+    // Store the selected coordinates.
+    placement_coordinates->r = r-1;
+    placement_coordinates->c = c-1;
 }

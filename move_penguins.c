@@ -8,13 +8,14 @@
 
 // In this function, each player who has a possible move is asked to pick a penguin and choose a destination cell for that penguin. Then the legality of that move is checked and if the move is legal the penguin is taken to the new cell, i.e. the map and the scoreboard is updated. Then the loop repeats for the next player.
 
-int move_penguins(struct GameState GS)
+int move_penguins(GameState GS)
 {
     // Pull the gamestate values from GS into local variables
     int rows = GS.map[0][0].data[0];
     int columns = GS.map[0][0].data[1];
     int total_players = GS.players[0].player_no;
-    int current_player, r, c, penguin_coordinates[2], destination_coordinates[2];
+    int current_player;
+    coordinates penguin_coordinates, destination_coordinates;
 
 
     while(1)
@@ -27,18 +28,18 @@ int move_penguins(struct GameState GS)
 
             if (movement_possibility_check(GS, current_player) == 1)
             {
-                // Since the check returned a 1, the player has a penguin that can move, so we will ask for the player to select a penguin that can move. We do this using get_penguin_coordinates function which stores the coordinates in the penguin_coordinates array.
+                // Since the check returned a 1, the player has a penguin that can move, so we will ask for the player to select a penguin that can move. We do this using get_penguin_coordinates function which stores the coordinates in the penguin_coordinates struct.
 
-                get_penguin_coordinates(GS, penguin_coordinates);
+                get_penguin_coordinates(GS, &penguin_coordinates);
 
-                // Now that the penguin is selected we ask the player to select a destination to move to. We do this using get_destination_coordinates function and then store the coordinates in the destination_coordinates array.
+                // Now that the penguin is selected we ask the player to select a destination to move to. We do this using get_destination_coordinates function and then store the coordinates in the destination_coordinates struct.
 
-                get_destination_coordinates(GS, destination_coordinates, penguin_coordinates);
+                get_destination_coordinates(GS, &destination_coordinates, penguin_coordinates);
 
                 //
                 // // Now that the a valid penguin and a legal destination are selected we store the destination's coordinates and make the move, i.e. update the map.
                 //
-                // int destination_coordinates[2] = {r, c};
+                //
                 //
                 update_map(GS, penguin_coordinates, destination_coordinates);
                 //

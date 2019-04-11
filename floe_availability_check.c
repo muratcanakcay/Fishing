@@ -3,7 +3,7 @@
 
 // The functions checks if a given cell has adjacent cells that a penguin can move to. It returns the total number of cells that can be moved to from the given cell, i.e. 0-4.
 
-int floe_availability_check(struct GameState GS, int r, int c)
+int floe_availability_check(GameState GS, int r, int c)
 {
     int rows = GS.map[0][0].data[0] - 1;
     int columns = GS.map[0][0].data[1] - 1;

@@ -1,2 +1,2 @@
 /* update_map function declaration */
-int update_map(struct GameState GS, int departure[2], int arrival[2]);
+int update_map(GameState GS, coordinates penguin_coordinates, coordinates destination_coordinates);
