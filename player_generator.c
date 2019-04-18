@@ -34,7 +34,7 @@ player * player_generator()
 
     players[0].player_ID[0] = p; // total no of penguins
     players[0].player_no = n; // total no of players
-    players[0].movement_possible = n; // no of players which can move
+    players[0].movement_possible = n; // no of players which can still move
     players[0].player_score = 0; // current_player
 
     /* Get the IDs for each player and populate the structs of each player with their individual data */
@@ -45,7 +45,7 @@ player * player_generator()
         do
         {
             printf("Enter Player %d's ID (max. 30 characters): ", n);
-            scanf(" %s", player_ID); 
+            scanf(" %s", player_ID);
             strcpy(players[n].player_ID, player_ID);
             players[n].player_no = n;
             players[n].player_score = 0;

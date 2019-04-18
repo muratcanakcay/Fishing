@@ -7,8 +7,8 @@
 void get_penguin_coordinates(GameState GS,  coordinates * penguin_coordinates)
 {
     // Pull the gamestate values from GS into local variables
-    int rows = GS.map[0][0].data[0];
-    int columns = GS.map[0][0].data[1];
+    int rows = GS.map_dims.r;
+    int columns = GS.map_dims.c;
     int current_player = GS.players[0].player_score;
     int r, c, selection_legality = 1;
 

@@ -9,8 +9,8 @@
 int movement_possibility_check(GameState GS, int player_to_check)
 {
     // Pull the gamestate values from GS into local variables
-    int rows = GS.map[0][0].data[0];
-    int columns = GS.map[0][0].data[1];
+    int rows = GS.map_dims.r;
+    int columns = GS.map_dims.c;
     int r, c;
 
     // First check if the player_to_check has been previously flagged as "cannot move". If it's already flagged return 0.
@@ -30,7 +30,7 @@ int movement_possibility_check(GameState GS, int player_to_check)
         }
     }
 
-    // If the whole map is searched and there's no penguin which can make a move then a 0 is returned by the function. The movement_possible field  of the player struct stored at index 0 of players array is increased by one (no of players that can't move) and the player is flagged as cannot move.
+    // If the whole map is searched and there's no penguin which can make a move then a 0 is returned by the function. The movement_possible field  of the player struct stored at index 0 of players array is decreased by one (no of players that can still move) and the player is flagged as cannot move.
 
     GS.players[0].movement_possible -= 1;
     GS.players[player_to_check].movement_possible = 0;
