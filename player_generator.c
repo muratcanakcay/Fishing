@@ -3,7 +3,7 @@
 #include <string.h>
 #include "data_structures.h"
 
-player * player_generator()
+player * player_generator(int* max_turns)
 {
     int p, n;
 
@@ -32,7 +32,7 @@ player * player_generator()
     - "player_score" variable is used to keep the player_no of the current player
     - "player_ID" variable is used to store the no of penguins each player has. This is a character array so the value of the integer is kept as a character.) */
 
-    players[0].player_ID[0] = p; // total no of penguins
+    players[0].player_ID[0] = p; // total no of penguins // DISCARD IF NOT USED
     players[0].player_no = n; // total no of players
     players[0].movement_possible = n; // no of players which can still move
     players[0].player_score = 0; // current_player
@@ -52,5 +52,12 @@ player * player_generator()
             players[n].movement_possible = 1;
         } while (strlen(player_ID) < 1 || strlen(player_ID) > 30); /* This needs attention. When only enter is pressed how do we repeat the while loop? */
     }
+
+    do
+    {
+        printf("Enter number of turns you want the game to last (0 for unlimited): ");
+        scanf(" %d", max_turns);
+    } while (*max_turns < 0);
+
     return players;
 }

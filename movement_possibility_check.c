@@ -6,16 +6,18 @@
 
 // This function can be improved to return the coordinates of each penguin belonging to the player, and how many directions each penguin can move towards (0-4)
 
-int movement_possibility_check(GameState GS, int player_to_check)
+int movement_possibility_check(GameState GS)
 {
     // Pull the gamestate values from GS into local variables
     int rows = GS.map_dims.r;
     int columns = GS.map_dims.c;
+    int player_to_check = GS.players[0].player_score; // current player
     int r, c;
 
     // First check if the player_to_check has been previously flagged as "cannot move". If it's already flagged return 0.
 
-    if (GS.players[player_to_check].movement_possible == 0) return 0;
+    if (GS.players[player_to_check].movement_possible == 0)
+        return 0;
 
     // If the player_to_check is not flagged, check movement possibility for the current state of the game.
 
@@ -26,7 +28,8 @@ int movement_possibility_check(GameState GS, int player_to_check)
             // If a penguin belonging to player_to_check is found in the cell located at row r and column c, we check if that penguin can move, i.e. is there an available ice_floe it can move to - up, down, left or right. This is done by the function floe_availability_check. If the penguin can move then this function returns one and exits.
 
             if (GS.map[r][c].penguin_owner == player_to_check)
-                if (floe_availability_check(GS, r, c)) return 1;
+                if (floe_availability_check(GS, r, c))
+                    return 1;
         }
     }
 

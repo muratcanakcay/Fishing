@@ -12,11 +12,10 @@ int main()
     /* Call for the player_generator function that will ask the users to input the player data (number of players, player IDs for each player and number of penguins) and create the players array containing the player structures containing the player data. When that's done call for the map_creator function that will ask for rows and columns, create the map array containing the ice_floe structures and randomly populate the ice_floes with fish, returning the ready-to-play map. Place both arrays in the GS struct. */
 
     GameState GS = {
-                        {0, 0},
-                        0,
-                        player_generator(),
-                        map_generator(GS.players, &(GS.map_dims)),
-
+                        {0, 0},                         // map dimensions
+                        0,                              // max_turns
+                        player_generator(&GS.max_turns),// players array
+                        map_generator(&GS.map_dims)     // map array
                     };
 
     // **** PLACEMENT PHASE **** //
@@ -25,7 +24,7 @@ int main()
 
     // **** MOVEMENT PHASE **** //
 
-    move_penguins(GS); // if returns 0 than game over?
+    move_penguins(GS); // when function exits game over
 
     return 0;
 }

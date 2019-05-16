@@ -12,10 +12,10 @@ The first is a one dimensional array containing in each cell the "player" struct
 
 typedef struct
 {
-    char player_ID[30];      // Player's name / Total no of penguins
+    char player_ID[30];      // Player's name / Total no of penguins in Placement Phase - Current Turn in Movement Phase
     int player_no;           // Player's number / Total no of players
     int player_score;        // Player's score / current_player's no
-    int movement_possible;   /* 0 if player cannot move, 1 if can (default value is 1 and it can be updated to 0 in the movement_possibility_check function) / Total no of players who can move. */
+    int movement_possible;   /* 0 if player cannot move, 1 if can (default value is 1 and it can be updated to 0 in the movement_possibility_check function) / Total no of players who CAN move. */
 } player;
 
 /* The second is a 2-dimensional array containining in each cell the "ice_floe" structures which hold data related with the map. */
@@ -24,8 +24,6 @@ typedef struct
 {
     int penguin_owner;  // The owner of the penguin in the cell - 0 if none
     int fish;           // The number of fish in the cell (0-3).
-    int data[3]; /* Index 0 and 1 - The number of rows and columns of the map
-                    Index 2 - The game turn TO DE DISCARDED */
 } ice_floe;
 
 /* The third is the main data container of the game state, i.e. the GameState struct that will hold the two arrays. */
@@ -33,8 +31,7 @@ typedef struct
 typedef struct
 {
     coordinates map_dims;   // The dimensions of the map
-    int game_turn;          // The game turn
+    int max_turns;          // How long the game will last (0 = unlimited)
     player* players;        // "players" array holding the data for each player
     ice_floe** map;         // "map" array holding data of the map
-
 } GameState;
