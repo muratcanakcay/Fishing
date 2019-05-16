@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Suliaman/Documents/FishingGithub/data_structures.h
+
+C:/Users/Suliaman/Documents/FishingGithub/placement_score_check.c
+stdio.h
+-
+stdlib.h
+-
+data_structures.h
+C:/Users/Suliaman/Documents/FishingGithub/data_structures.h
+

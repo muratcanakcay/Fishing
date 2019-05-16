@@ -5,8 +5,8 @@
 
 void placement_score_check(GameState GS, coordinates * placement_coordinates)
 {
-	int rows = GS.map[0][0].data[0];
-    int columns = GS.map[0][0].data[1];
+    int rows = GS.map_dims.r;
+    int columns = GS.map_dims.c;
     int Placementscores[rows][columns];
     int openingscore[rows][columns];
 
