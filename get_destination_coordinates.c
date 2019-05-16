@@ -7,8 +7,8 @@
 void get_destination_coordinates(GameState GS,  coordinates * destination_coordinates, coordinates penguin_coordinates)
 {
     // Pull the gamestate values from GS into local variables
-    int rows = GS.map_dims.r;
-    int columns = GS.map_dims.c;
+    int rows = GS.map[0][0].data[0];
+    int columns = GS.map[0][0].data[1];
     int current_player = GS.players[0].player_score;
     int r, c, destination_legality = 1;
     // Ask the player for the coordinates of the destination cell
