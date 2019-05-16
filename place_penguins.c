@@ -3,7 +3,6 @@
 #include "data_structures.h"
 #include "update_map.h"
 #include "get_placement_coordinates.h"
-#include "placement_score_check.h"
 
 int place_penguins(GameState GS)
 {
@@ -21,11 +20,8 @@ int place_penguins(GameState GS)
         {
             GS.players[0].player_score = current_player; // Update current_player in GS.
 
-//            For Interactive Version
-//            get_placement_coordinates(GS, &placement_coordinates, current_penguin); // Get placement coordinates from the player.
+            get_placement_coordinates(GS, &placement_coordinates, current_penguin); // Get placement coordinates from the player.
 
-//           For Autonoumous Version
-                placement_score_check(GS, &placement_coordinates);
         // Update the map using update_map function.
         update_map(GS, dummy_coordinates, placement_coordinates);
         }

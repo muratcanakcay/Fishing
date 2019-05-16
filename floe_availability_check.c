@@ -5,8 +5,8 @@
 
 int floe_availability_check(GameState GS, int r, int c)
 {
-    int rows = GS.map[0][0].data[0] - 1;
-    int columns = GS.map[0][0].data[1] - 1;
+    int rows = GS.map_dims.r - 1;
+    int columns = GS.map_dims.c - 1;
     int i = 0;
 
     if (r != 0 && GS.map[r-1][c].fish != 0 && GS.map[r-1][c].penguin_owner == 0)

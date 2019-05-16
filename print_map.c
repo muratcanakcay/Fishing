@@ -7,13 +7,13 @@
 void print_map(GameState GS)
 {
     // Pull the gamestate values from GS into local variables
-    int rows = GS.map[0][0].data[0];
-    int columns = GS.map[0][0].data[1];
+    int rows = GS.map_dims.r;
+    int columns = GS.map_dims.c;
     int current_player = GS.players[0].player_score;
     int total_players = GS.players[0].player_no;
     int c, r;
 
-    system("cls");
+    system("clear");
 
     // Print column numbers
     printf("\033[0;33m"); //Set the text to the color yellow
