@@ -1,3 +1,5 @@
+#define  ID "The Penguin Captains"  // Our team's ID
+
 /* The following struct is used to store, pass and return coordinates in the form of rows and columns */
 
 typedef struct
@@ -5,6 +7,16 @@ typedef struct
     int r;
     int c;
 } coordinates;
+
+/* The following struct is used to store and pass the command line parameters entered during the execution of the game */
+
+typedef struct
+{
+    char phase_mark[9];  // placement, movement, pvp or pve
+    int N; // # of penguins - only used if phase_mark == movement
+    char inputboardfile[20]; // name of the file to read the gamestate from
+    char outputboardfile[20]; // name of the file to write the gamestate to
+} command_line;
 
 /*  The following are the main data structures which will be used to hold all the data for the game.
 
@@ -31,7 +43,6 @@ typedef struct
 typedef struct
 {
     coordinates map_dims;   // The dimensions of the map
-    int max_turns;          // How long the game will last (0 = unlimited)
     player* players;        // "players" array holding the data for each player
     ice_floe** map;         // "map" array holding data of the map
 } GameState;

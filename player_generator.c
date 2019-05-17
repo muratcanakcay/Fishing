@@ -3,7 +3,7 @@
 #include <string.h>
 #include "data_structures.h"
 
-player * player_generator(int* max_turns)
+player * player_generator()
 {
     int p, n;
 
@@ -52,12 +52,6 @@ player * player_generator(int* max_turns)
             players[n].movement_possible = 1;
         } while (strlen(player_ID) < 1 || strlen(player_ID) > 30); /* This needs attention. When only enter is pressed how do we repeat the while loop? */
     }
-
-    do
-    {
-        printf("Enter number of turns you want the game to last (0 for unlimited): ");
-        scanf(" %d", max_turns);
-    } while (*max_turns < 0);
 
     return players;
 }
