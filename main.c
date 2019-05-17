@@ -4,6 +4,7 @@
 #include "map_generator.h"
 #include "place_penguins.h"
 #include "move_penguins.h"
+#include "print_map.h"
 
 int main()
 {
@@ -23,6 +24,7 @@ int main()
     place_penguins(GS);
 
     // **** MOVEMENT PHASE **** //
+
 
     move_penguins(GS); // when function exits game over
 

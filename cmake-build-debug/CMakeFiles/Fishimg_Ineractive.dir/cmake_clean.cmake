@@ -14,6 +14,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Fishimg_Ineractive.dir/print_map.c.obj"
   "CMakeFiles/Fishimg_Ineractive.dir/update_map.c.obj"
   "CMakeFiles/Fishimg_Ineractive.dir/placement_score_check.c.obj"
+  "CMakeFiles/Fishimg_Ineractive.dir/opening_score_check.c.obj"
   "Fishimg_Ineractive.pdb"
   "Fishimg_Ineractive.exe"
   "Fishimg_Ineractive.exe.manifest"

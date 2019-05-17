@@ -365,6 +365,33 @@ movement_possibility_check.c.s:
 	$(MAKE) -f CMakeFiles\Fishimg_Ineractive.dir\build.make CMakeFiles/Fishimg_Ineractive.dir/movement_possibility_check.c.s
 .PHONY : movement_possibility_check.c.s
 
+opening_score_check.obj: opening_score_check.c.obj
+
+.PHONY : opening_score_check.obj
+
+# target to build an object file
+opening_score_check.c.obj:
+	$(MAKE) -f CMakeFiles\Fishimg_Ineractive.dir\build.make CMakeFiles/Fishimg_Ineractive.dir/opening_score_check.c.obj
+.PHONY : opening_score_check.c.obj
+
+opening_score_check.i: opening_score_check.c.i
+
+.PHONY : opening_score_check.i
+
+# target to preprocess a source file
+opening_score_check.c.i:
+	$(MAKE) -f CMakeFiles\Fishimg_Ineractive.dir\build.make CMakeFiles/Fishimg_Ineractive.dir/opening_score_check.c.i
+.PHONY : opening_score_check.c.i
+
+opening_score_check.s: opening_score_check.c.s
+
+.PHONY : opening_score_check.s
+
+# target to generate assembly for a file
+opening_score_check.c.s:
+	$(MAKE) -f CMakeFiles\Fishimg_Ineractive.dir\build.make CMakeFiles/Fishimg_Ineractive.dir/opening_score_check.c.s
+.PHONY : opening_score_check.c.s
+
 place_penguins.obj: place_penguins.c.obj
 
 .PHONY : place_penguins.obj
@@ -563,6 +590,9 @@ help:
 	@echo ... movement_possibility_check.obj
 	@echo ... movement_possibility_check.i
 	@echo ... movement_possibility_check.s
+	@echo ... opening_score_check.obj
+	@echo ... opening_score_check.i
+	@echo ... opening_score_check.s
 	@echo ... place_penguins.obj
 	@echo ... place_penguins.i
 	@echo ... place_penguins.s

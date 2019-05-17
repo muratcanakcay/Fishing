@@ -10,7 +10,7 @@ map_creator.o : data_structures.h
 
 print_map.o : data_structures.h
 update_map.o : data_structures.h
-placement_score_check.o : data_structures.h
+placement_score_check.o : opening_score_check.h data_structures.h
 
 
 place_penguins.o : get_placement_coordinates.h update_map.h data_structures.h fishai.h

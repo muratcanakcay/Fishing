@@ -3,19 +3,24 @@
 #include "data_structures.h"
 #include "print_map.h"
 #include "floe_availability_check.h"
+#include <time.h>
 
 void get_penguin_coordinates(GameState GS,  coordinates * penguin_coordinates)
 {
     // Pull the gamestate values from GS into local variables
+    srand(time(NULL));
     int rows = GS.map_dims.r;
     int columns = GS.map_dims.c;
     int current_player = GS.players[0].player_score;
     int r, c, selection_legality = 1;
 
     // Ask the player for the coordinates of the penguin
+    print_map(GS);
+    printf("\n\n\n");
     do
     {
         // Ask for the row# of the penguin.
+
         do
         {
             print_map(GS);

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.13)
-project(Fishimg_Ineractive C)
+project(Fishing_Github C)
 
 set(CMAKE_C_STANDARD 11)
 
@@ -34,5 +34,4 @@ add_executable(Fishimg_Ineractive
         print_map.h
         update_map.c
         update_map.h
-        placement_score_check.c
-        placement_score_check.h)
+        placement_score_check.c placement_score_check.h opening_score_check.c opening_score_check.h)
