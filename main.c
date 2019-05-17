@@ -13,13 +13,18 @@ int main(int argc, char* argv[])
 {
     // **** PROCESS COMMAND LINE PARAMETERS **** //
 
-    int return_value;
-    command_line parameters;
+    CommandLine parameters;
 
-    return_value = process_parameters(argc, argv, parameters); // constructs the parameters struct which holds the command line parameters
+    int return_value = process_parameters(argc, argv, &parameters); // constructs the parameters struct which holds the command line parameters
 
     if (return_value == -1) return(0); // exit program with error code 0
 
+    printf("CHECKING PARAMETERS STRUCT FUNCTIONALITY \n");
+    printf("parameters.phase_mark = %s\n", parameters.phase_mark);
+    printf("parameters.N = %d\n", parameters.N);
+    printf("parameters.inputboardfile = %s\n", parameters.inputboardfile);
+    printf("parameters.outputboardfile = %s\n", parameters.outputboardfile);
+    return(0);
 
     // **** INITIALIZATION PHASE **** //
 

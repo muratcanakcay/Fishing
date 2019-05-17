@@ -16,7 +16,7 @@ typedef struct
     int N; // # of penguins - only used if phase_mark == movement
     char inputboardfile[20]; // name of the file to read the gamestate from
     char outputboardfile[20]; // name of the file to write the gamestate to
-} command_line;
+} CommandLine;
 
 /*  The following are the main data structures which will be used to hold all the data for the game.
 

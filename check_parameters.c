@@ -1,39 +1,76 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-/* This function checks the command_line parameters entered during the execution of the program for errors.*/
+/* This function checks the command_line parameters entered during the execution of the program for errors. It returns -1 if there are errors in the parameters and 0 if the parameters satisfy the requirements. */
 
 int check_parameters(int argc, char** argv)
 
 {
+    //first we check if the first argument is valid
+
+    // is phase= missing or misspelled?
+
     char* loc = strstr(argv[1], "phase=");
-    if (loc != NULL)
-    printf("leftmost occurrence of sub-string in a given string is at "
-           "location %ld.\n\n", (loc - argv[1]) + 1);
+    if (loc == NULL || loc - argv[1] != 0)
+    {
+        printf("The first parameter is missing or misspelled\n");
+        return(-1);
+    }
 
-    printf("test_parameter\n");
+    // is the value of phase= valid?
 
-    // if (
-    //     strstr(argv[1], "phase=") -  argv[1] != 0 || // if "phase="" is problematic
-    //     (strspn(argv[1], "phase=placement") == 15 && strspn(argv[2], "penguins=") != 9) // if "penguins="" is missing
-    //     ) // the game displays message and exits
-    // {
-    //
-    //     return(-1);
-    // }
+    char* phase_mark = strchr(argv[1], '=') + 1;
+    char* phase_options[4] = {"placement", "movement", "interactive", "pve"};
 
-    // if (strspn(argv[1], "phase=") == 6)
-    // {
-    //     printf("YES\n");
-    //     return(-1);
-    // }
-    // else
-    // {
-    //     printf("NO\n");
-    //     return(-1);
-    // }
+    for (int i = 0; i < 4; i++)
+    {
+        if (strcmp (phase_mark, phase_options[i]) == 0) // a match is found
+        {
+            printf("the values matches: input: %s found: %s\n", phase_mark, phase_options[i]);
+            break;
+        }
+        if (i == 3) // if no valid match is found
+        {
+            printf("The first parameter's value (%s) is missing or misspelled\n", phase_mark);
+            return(-1);
+        }
+    }
 
+    if (strcmp(phase_mark, "placement") == 0) // if phase=placement
+    {
+        // now we check if the second argument is valid in placement phase
 
+        if (argc > 2) loc = strstr(argv[2], "penguins=");
+        if (argc == 2 || loc == NULL || loc - argv[2] != 0)
+        {
+            printf("The second parameter is missing or misspelled\n");
+            return(-1);
+        }
 
+        // is the value of penguins= valid?
 
+        char* penguins = strchr(argv[2], '=') + 1;
+        if (atoi(penguins) == 0)
+        {
+            printf("The second parameter's value (%s) is missing or misspelled\n", penguins);
+            return(-1);
+        }
+
+        // are the input and output files given when phase=placement?
+
+        if (argc != 5)
+        {
+            printf("You have the give the names of the input and output files for autonomous mode to function\n");
+            return(-1);
+        }
+    }
+
+    // are the input and output files given when phase=movement?
+
+    if (strcmp(phase_mark, "movement") == 0 && argc != 4)
+    {
+        printf("You have the give the names of the input and output files for autonomous mode to function\n");
+        return(-1);
+    }
 }

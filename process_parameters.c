@@ -6,7 +6,7 @@
 
 /* This function uses the command_line parameters entered during the execution of the program to create the parameters struct which will define the game mode, e.g. interactive, autonomous placement/movement phase, pve... */
 
-int process_parameters(int argc, char** argv, command_line parameters)
+int process_parameters(int argc, char** argv, CommandLine* parameters)
 {
     if (argc==2 && strcmp(argv[1], "id") == 0)
     // if the only parameter is "id" the game displays our team's ID and exits
@@ -18,44 +18,36 @@ int process_parameters(int argc, char** argv, command_line parameters)
     if (argc == 1 || check_parameters(argc, argv) == -1)
     // if no parameters are entered or the parameters have errors
     {
-        printf("You must enter the necessary parameters correctly for the program to work\n");
+        printf("You must enter the necessary parameters correctly for the program to work\n\n- If entering file names both input and output filenames must be given.\n");
         return(-1);
     }
 
-    printf("test_process\n"); // debug - remove
-
     // define phase_mark value in the parameters struct
     char* phase_mark = strchr(argv[1], '=') + 1;
-    strcpy(parameters.phase_mark, phase_mark);
-    printf("Phase: %s\n", parameters.phase_mark); // debug - remove
+    strcpy(parameters->phase_mark, phase_mark);
+    printf("Phase: %s\n", parameters->phase_mark); // debug - remove
 
     // if placement phase then define N value in parameters struct
-    if (strcmp(parameters.phase_mark, "placement") == 0)
+    if (strcmp(parameters->phase_mark, "placement") == 0)
     {
         char* penguins = strchr(argv[2], '=') + 1;
-        parameters.N = atoi(penguins);
-        printf("No. of penguins: %d\n", parameters.N); // debug - remove
+        parameters->N = atoi(penguins);
+        printf("No. of penguins: %d\n", parameters->N); // debug - remove
     }
 
-    if (argc >= 3) // if file names are given define them in parameters struct
+    if (argc >= 4) // if file names are given define them in parameters struct
     {
         // decide position of input and output file names
         int in = 2; // default position for input file
-        if (strcmp(parameters.phase_mark, "placement") == 0) in++;
+        if (strcmp(parameters->phase_mark, "placement") == 0) in++;
         int out = in + 1; // out is right after in
 
         char* input_file = argv[in];
-        strcpy(parameters.inputboardfile, input_file);
+        strcpy(parameters->inputboardfile, input_file);
         char* output_file = argv[out];
-        strcpy(parameters.outputboardfile, output_file);
+        strcpy(parameters->outputboardfile, output_file);
 
-        printf("Input: %s\nOutput: %s\n", parameters.inputboardfile, parameters.outputboardfile); // debug - remove
+        printf("Input: %s\nOutput: %s\n", parameters->inputboardfile, parameters->outputboardfile); // debug - remove
     }
-
-
-
-
-
-
-    return(-1);
+    return(0);
 }
