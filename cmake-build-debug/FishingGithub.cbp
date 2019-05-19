@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="FishingGithub"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="FishingGithub">
+				<Option output="C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/FishingGithub.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/Suliaman/Documents/FishingGithub/."/>
+					<Add directory="C:/TDM-GCC-64/bin/../lib/gcc/x86_64-w64-mingw32/5.1.0/include"/>
+					<Add directory="C:/TDM-GCC-64/bin/../lib/gcc/x86_64-w64-mingw32/5.1.0/../../../../include"/>
+					<Add directory="C:/TDM-GCC-64/bin/../lib/gcc/x86_64-w64-mingw32/5.1.0/include-fixed"/>
+					<Add directory="C:/TDM-GCC-64/bin/../lib/gcc/x86_64-w64-mingw32/5.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 FishingGithub"/>
+					<CompileFile command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="FishingGithub/fast">
+				<Option output="C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/FishingGithub.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/Suliaman/Documents/FishingGithub/."/>
+					<Add directory="C:/TDM-GCC-64/bin/../lib/gcc/x86_64-w64-mingw32/5.1.0/include"/>
+					<Add directory="C:/TDM-GCC-64/bin/../lib/gcc/x86_64-w64-mingw32/5.1.0/../../../../include"/>
+					<Add directory="C:/TDM-GCC-64/bin/../lib/gcc/x86_64-w64-mingw32/5.1.0/include-fixed"/>
+					<Add directory="C:/TDM-GCC-64/bin/../lib/gcc/x86_64-w64-mingw32/5.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 FishingGithub/fast"/>
+					<CompileFile command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/TDM-GCC-64/bin/mingw32-make.exe -f &quot;C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/choose_penguin.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/choose_penguin.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/data_structures.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/destination_legality_check.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/destination_legality_check.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/floe_availability_check.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/floe_availability_check.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/get_destination_coordinates.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/get_destination_coordinates.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/get_penguin_coordinates.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/get_penguin_coordinates.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/get_placement_coordinates.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/get_placement_coordinates.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/main.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/map_generator.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/map_generator.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/move_penguins.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/move_penguins.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/movement_possibility_check.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/movement_possibility_check.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/neighbour_score_check.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/neighbour_score_check.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/place_penguins.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/place_penguins.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/placement_legality_check.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/placement_legality_check.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/player_generator.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/player_generator.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/print_map.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/print_map.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/update_map.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/update_map.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
