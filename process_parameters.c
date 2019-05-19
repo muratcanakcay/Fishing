@@ -25,14 +25,12 @@ int process_parameters(int argc, char** argv, CommandLine* parameters)
     // define phase_mark value in the parameters struct
     char* phase_mark = strchr(argv[1], '=') + 1;
     strcpy(parameters->phase_mark, phase_mark);
-    printf("Phase: %s\n", parameters->phase_mark); // debug - remove
 
     // if placement phase then define N value in parameters struct
     if (strcmp(parameters->phase_mark, "placement") == 0)
     {
         char* penguins = strchr(argv[2], '=') + 1;
         parameters->N = atoi(penguins);
-        printf("No. of penguins: %d\n", parameters->N); // debug - remove
     }
 
     if (argc >= 4) // if file names are given define them in parameters struct
@@ -46,8 +44,12 @@ int process_parameters(int argc, char** argv, CommandLine* parameters)
         strcpy(parameters->inputboardfile, input_file);
         char* output_file = argv[out];
         strcpy(parameters->outputboardfile, output_file);
-
-        printf("Input: %s\nOutput: %s\n", parameters->inputboardfile, parameters->outputboardfile); // debug - remove
     }
-    return(0);
+
+	printf("Phase: %s\n", parameters->phase_mark);
+	printf("Penguins: %d\n", parameters->N);
+	printf("Input file: %s\n", parameters->inputboardfile);
+	printf("Output file: %s\n", parameters->outputboardfile);
+
+	return(0);
 }

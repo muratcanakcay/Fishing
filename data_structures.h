@@ -24,7 +24,7 @@ The first is a one dimensional array containing in each cell the "player" struct
 
 typedef struct
 {
-    char player_ID[30];      // Player's name / Total no of penguins in Placement Phase - Current Turn in Movement Phase
+    char player_ID[30];      // Player's name / Total no of penguins
     int player_no;           // Player's number / Total no of players
     int player_score;        // Player's score / current_player's no
     int movement_possible;   /* 0 if player cannot move, 1 if can (default value is 1 and it can be updated to 0 in the movement_possibility_check function) / Total no of players who CAN move. */
@@ -42,6 +42,7 @@ typedef struct
 
 typedef struct
 {
+    CommandLine parameters; // Command line parameters entered during execution
     coordinates map_dims;   // The dimensions of the map
     player* players;        // "players" array holding the data for each player
     ice_floe** map;         // "map" array holding data of the map

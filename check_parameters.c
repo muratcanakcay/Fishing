@@ -26,10 +26,8 @@ int check_parameters(int argc, char** argv)
     for (int i = 0; i < 4; i++)
     {
         if (strcmp (phase_mark, phase_options[i]) == 0) // a match is found
-        {
-            printf("the values matches: input: %s found: %s\n", phase_mark, phase_options[i]);
             break;
-        }
+
         if (i == 3) // if no valid match is found
         {
             printf("The first parameter's value (%s) is missing or misspelled\n", phase_mark);
@@ -56,19 +54,12 @@ int check_parameters(int argc, char** argv)
             printf("The second parameter's value (%s) is missing or misspelled\n", penguins);
             return(-1);
         }
-
-        // are the input and output files given when phase=placement?
-
-        if (argc != 5)
-        {
-            printf("You have the give the names of the input and output files for autonomous mode to function\n");
-            return(-1);
-        }
     }
 
-    // are the input and output files given when phase=movement?
+    // are the input and output files given for autonomus mode?
 
-    if (strcmp(phase_mark, "movement") == 0 && argc != 4)
+    if ((strcmp(phase_mark, "movement") == 0 && argc < 4) ||
+		(strcmp(phase_mark, "placement") == 0 && argc < 5))
     {
         printf("You have the give the names of the input and output files for autonomous mode to function\n");
         return(-1);

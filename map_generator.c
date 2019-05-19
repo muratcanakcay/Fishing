@@ -4,7 +4,7 @@
 #include <time.h>
 #include "data_structures.h"
 
-ice_floe ** map_generator(coordinates *map_dims)
+ice_floe ** map_generator(CommandLine parameters, coordinates *map_dims)
 {
     srand(time(NULL));
     int MIN_ROWS = 10, MIN_COLUMNS = 10, MAX_ROWS = 35, MAX_COLUMNS = 35;
