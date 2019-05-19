@@ -12,9 +12,10 @@ int read_gamestate(GameState* GS_ptr)
 
     FILE* fp; // pointer to file text
     char ch, buffer[32];
-    int r = 0, c = 0, n = 0, rows = 0, columns = 0, arr[500];
+    int r = 0, c = 0, n = 0, rows = 0, columns = 0, arr[500], peng_count = 0;
 
-    fp = fopen(GS_ptr->parameters.inputboardfile, "r");
+	strcpy(buffer, ""); // initialize buffer to ""
+	fp = fopen(GS_ptr->parameters.inputboardfile, "r");
 
 	if (fp == NULL) // if the input file does not exist
 	{
@@ -22,34 +23,59 @@ int read_gamestate(GameState* GS_ptr)
 		return -1;
 	}
 
-	/* DISPLAY ERROR IF FILE DOES NOT EXIST OR OPENS WITH ERRORS!!! */
+	printf("File opened\n\n"); // the input file is found and opened
 
-    printf("File opened\n\n");
+	/* read the dimensions of the map from line 1 of the file */
 
     while (1)
     {
         ch = getc(fp);
-        //* Read the dimensions of the map from line 1 of the file
 
         if (rows == 0 || columns == 0)
         {
 
             if (ch == ' ' || ch == '\n')
             {
-                arr[c] = atoi(buffer);
+				while (c == 2 && ch == ' ') ch = getc(fp); /* jump over all of the spaces (if any) after the second value is read */
+
+				if (!(c == 2 && ch == '\n') &&
+					(strlen(buffer) == 0 ||
+					(c == 0 && ch == '\n') ||
+					c == 2))
+
+				/* if the second value has been read without errors and there was only spaces after the second value (which we already jumped over) and there's no third value given - so it ends with a line break - THEN there's no error, so this if statement does not execute!
+
+				However if that is NOT the case, AND - if the first line starts with a space or line break OR if there's only 1 value given on the first line OR if there are more than 2 values given on the first line  THEN display error message and return -1 */
+
+				{
+					printf("%s\n", FILE_ERROR_1);
+					return -1;
+				}
+
+				/* there's no error so put the value in the buffer into the array, clear the buffer and move to the next position of the array */
+
+				arr[c] = atoi(buffer);
                 c++;
-                bzero(buffer, 32);
+                strcpy(buffer, "");
                 r = 0;
             }
 
             else
             {
-                buffer[r] = ch;
-                r++;
+				if ((ch - '0' >= 0 && ch - '0' <= 9) && (ch - '0' != 0 || r!= 0)) /* if ch is a numeral and the first digit is not 0 then put it into buffer (i.e. '03' or 'k6' is not allowed) */
+				{
+					buffer[r] = ch;
+                	r++;
+				}
+				else /* if ch is not a numeral or the first digit is not 0 then display error message and return -1 */
+				{
+					printf("okk %s\n", FILE_ERROR_1);
+					return -1;
+				}
             }
         }
 
-        // when the first two values are read from the file, pass the values to row and column variables and create the map array.
+        /* when the first two values are read from the file, pass the values to row and column variables and create the map array. */
 
         if (ch == '\n')
         {
@@ -59,12 +85,15 @@ int read_gamestate(GameState* GS_ptr)
             break;
         }
     }
-    //* Now that the dimensions of the map are read from file we create the map array and continue parsing the file and fill in the map array until we reach player ID.
+
+	bzero(buffer, 32); // empty the buffer
+
+    /* Now that the dimensions of the map are read from file we create the map array and continue parsing the file and fill in the map array until we reach player ID. */
 
 	ice_floe ** map = malloc(rows * sizeof(ice_floe *));
     for (int i = 0; i < rows; i++) map[i] = malloc(columns * sizeof(ice_floe));
 
-	//* Iterating through the row and columns we read values and pass them into their respective variables - fish or penguin_owner - in the ice_floe structures located in each cell of the  map array.
+	/* Iterating through the row and columns we read values and pass them into their respective variables - fish or penguin_owner - in the ice_floe structures located in each cell of the  map array. */
 
     for (r = 0; r < rows; r++)
     {
@@ -74,11 +103,9 @@ int read_gamestate(GameState* GS_ptr)
             map[r][c].fish = ch - '0';
             ch = getc(fp);
             map[r][c].penguin_owner = ch - '0';
-			if (GS_ptr->parameters.phase_mark == "movement")
-			{
-
-			}
-            ch = getc(fp);   // to jump over the space between columns
+			if (strcmp(GS_ptr->parameters.phase_mark, "movement") == 0)
+				if (ch - '0' == 1) peng_count++;
+			ch = getc(fp);   // to jump over the space between columns
         }
     	while (ch == ' ') ch = getc(fp); // for spaces at end of line
     }
@@ -100,7 +127,11 @@ int read_gamestate(GameState* GS_ptr)
 	/* initialize the data stored at index 0: */
 
 	/* total no of penguins */
+	// in placement phase no of penguins given as c.line parameter
 	temp[0].player_ID[0] = GS_ptr->parameters.N;
+	// in movement phase read no of penguins from file
+	if (strcmp(GS_ptr->parameters.phase_mark, "movement") == 0)
+		temp[0].player_ID[0] = peng_count;
 
 	/* total no of players */
 	temp[0].player_no = 0;
@@ -125,13 +156,13 @@ int read_gamestate(GameState* GS_ptr)
         {
             c++;
 
-            if (c == 1) // the name of the player is in the buffer
+            if (c == 1) /* the name of the player is in the buffer. store it in the array */
                 strcpy(temp[n].player_ID, buffer);
 
-			if (c == 2) // the number of the player is in the buffer
+			if (c == 2) /* the number of the player is in the buffer. store it in the array */
                 temp[n].player_no = atoi(buffer);
 
-			if (c == 3) // the score of the player is in the buffer
+			if (c == 3) /* the score of the player is in the buffer. store it in the array */
             {
                 temp[n].player_score = atoi(buffer);
                 temp[n].movement_possible = 1;
@@ -156,6 +187,7 @@ int read_gamestate(GameState* GS_ptr)
     }
 
     printf("\nTotal no of players: %d\n", temp[0].player_no);
+	printf("Total no of penguins per player: %d\n", temp[0].player_ID[0]);
     printf("Total no of players that can move: %d\n\n", temp[0].movement_possible);
 
     for (n = 1; n <= temp[0].player_no; n++)
@@ -178,6 +210,8 @@ int read_gamestate(GameState* GS_ptr)
 	GS_ptr->map_dims.c = columns;
 	GS_ptr->players = players;   					// players array
 	GS_ptr->map = map;  							// map array
+
+	fclose(fp); // close file
 
 	return 0;
 

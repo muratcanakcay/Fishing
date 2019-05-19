@@ -1,4 +1,7 @@
-#define  ID "The Penguin Captains"  // Our team's ID
+#define ID "The Penguin Captains"  // Our team's ID
+
+#define FILE_ERROR_1 "Error in the input file - line 1. The first line should provide the the dimensions of the board as with a single space between the values (e.g. '14 16'). The first line cannot begin with a space or line break. The dimensions cannot start with zero or include a non-numerical character. More than two values on the first line is also not accepted. Exiting program..."
+
 
 /* The following struct is used to store, pass and return coordinates in the form of rows and columns */
 
