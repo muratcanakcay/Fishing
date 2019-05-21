@@ -93,6 +93,12 @@
 		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/destination_legality_check.h">
 			<Option target="FishingGithub"/>
 		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/destination_score_check.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/destination_score_check.h">
+			<Option target="FishingGithub"/>
+		</Unit>
 		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/floe_availability_check.c">
 			<Option target="FishingGithub"/>
 		</Unit>
@@ -144,6 +150,12 @@
 		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/neighbour_score_check.h">
 			<Option target="FishingGithub"/>
 		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/opening_score_check.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/opening_score_check.h">
+			<Option target="FishingGithub"/>
+		</Unit>
 		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/place_penguins.c">
 			<Option target="FishingGithub"/>
 		</Unit>
@@ -154,6 +166,12 @@
 			<Option target="FishingGithub"/>
 		</Unit>
 		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/placement_legality_check.h">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/placement_score_check.c">
+			<Option target="FishingGithub"/>
+		</Unit>
+		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/placement_score_check.h">
 			<Option target="FishingGithub"/>
 		</Unit>
 		<Unit filename="C:/Users/Suliaman/Documents/FishingGithub/player_generator.c">

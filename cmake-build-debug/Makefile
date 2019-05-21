@@ -176,6 +176,33 @@ destination_legality_check.c.s:
 	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/destination_legality_check.c.s
 .PHONY : destination_legality_check.c.s
 
+destination_score_check.obj: destination_score_check.c.obj
+
+.PHONY : destination_score_check.obj
+
+# target to build an object file
+destination_score_check.c.obj:
+	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/destination_score_check.c.obj
+.PHONY : destination_score_check.c.obj
+
+destination_score_check.i: destination_score_check.c.i
+
+.PHONY : destination_score_check.i
+
+# target to preprocess a source file
+destination_score_check.c.i:
+	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/destination_score_check.c.i
+.PHONY : destination_score_check.c.i
+
+destination_score_check.s: destination_score_check.c.s
+
+.PHONY : destination_score_check.s
+
+# target to generate assembly for a file
+destination_score_check.c.s:
+	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/destination_score_check.c.s
+.PHONY : destination_score_check.c.s
+
 floe_availability_check.obj: floe_availability_check.c.obj
 
 .PHONY : floe_availability_check.obj
@@ -419,6 +446,33 @@ neighbour_score_check.c.s:
 	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/neighbour_score_check.c.s
 .PHONY : neighbour_score_check.c.s
 
+opening_score_check.obj: opening_score_check.c.obj
+
+.PHONY : opening_score_check.obj
+
+# target to build an object file
+opening_score_check.c.obj:
+	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/opening_score_check.c.obj
+.PHONY : opening_score_check.c.obj
+
+opening_score_check.i: opening_score_check.c.i
+
+.PHONY : opening_score_check.i
+
+# target to preprocess a source file
+opening_score_check.c.i:
+	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/opening_score_check.c.i
+.PHONY : opening_score_check.c.i
+
+opening_score_check.s: opening_score_check.c.s
+
+.PHONY : opening_score_check.s
+
+# target to generate assembly for a file
+opening_score_check.c.s:
+	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/opening_score_check.c.s
+.PHONY : opening_score_check.c.s
+
 place_penguins.obj: place_penguins.c.obj
 
 .PHONY : place_penguins.obj
@@ -472,6 +526,33 @@ placement_legality_check.s: placement_legality_check.c.s
 placement_legality_check.c.s:
 	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/placement_legality_check.c.s
 .PHONY : placement_legality_check.c.s
+
+placement_score_check.obj: placement_score_check.c.obj
+
+.PHONY : placement_score_check.obj
+
+# target to build an object file
+placement_score_check.c.obj:
+	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/placement_score_check.c.obj
+.PHONY : placement_score_check.c.obj
+
+placement_score_check.i: placement_score_check.c.i
+
+.PHONY : placement_score_check.i
+
+# target to preprocess a source file
+placement_score_check.c.i:
+	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/placement_score_check.c.i
+.PHONY : placement_score_check.c.i
+
+placement_score_check.s: placement_score_check.c.s
+
+.PHONY : placement_score_check.s
+
+# target to generate assembly for a file
+placement_score_check.c.s:
+	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/placement_score_check.c.s
+.PHONY : placement_score_check.c.s
 
 player_generator.obj: player_generator.c.obj
 
@@ -569,6 +650,9 @@ help:
 	@echo ... destination_legality_check.obj
 	@echo ... destination_legality_check.i
 	@echo ... destination_legality_check.s
+	@echo ... destination_score_check.obj
+	@echo ... destination_score_check.i
+	@echo ... destination_score_check.s
 	@echo ... floe_availability_check.obj
 	@echo ... floe_availability_check.i
 	@echo ... floe_availability_check.s
@@ -596,12 +680,18 @@ help:
 	@echo ... neighbour_score_check.obj
 	@echo ... neighbour_score_check.i
 	@echo ... neighbour_score_check.s
+	@echo ... opening_score_check.obj
+	@echo ... opening_score_check.i
+	@echo ... opening_score_check.s
 	@echo ... place_penguins.obj
 	@echo ... place_penguins.i
 	@echo ... place_penguins.s
 	@echo ... placement_legality_check.obj
 	@echo ... placement_legality_check.i
 	@echo ... placement_legality_check.s
+	@echo ... placement_score_check.obj
+	@echo ... placement_score_check.i
+	@echo ... placement_score_check.s
 	@echo ... player_generator.obj
 	@echo ... player_generator.i
 	@echo ... player_generator.s

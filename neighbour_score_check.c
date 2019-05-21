@@ -5,12 +5,7 @@
 
 int neighbour_score_check(int fish)
 {
-    if (fish==0)
-    {
-        return 10;
-    }
-    else
-    {
-        return 0;
-    }
+    if (fish==0) return 10;
+
+    else return 0;
 }

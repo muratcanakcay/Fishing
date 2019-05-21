@@ -5,6 +5,7 @@
 #include "get_penguin_coordinates.h"
 #include "get_destination_coordinates.h"
 #include "update_map.h"
+#include "choose_penguin.h"
 
 /* In this function, each player who has a possible move is asked to pick a penguin and choose a destination cell for that penguin. Then the legality of that move is checked and if the move is legal the penguin is taken to the new cell, i.e. the map and the scoreboard is updated. Then the loop repeats for the next player. */
 
@@ -30,7 +31,8 @@ int move_penguins(GameState GS)
             {
                 /* Since the check returned a 1, the player has a penguin that can move, so we will ask for the player to select a penguin that can move. We do this using get_penguin_coordinates function which stores the coordinates in the penguin_coordinates struct. */
 
-                get_penguin_coordinates(GS, &penguin_coordinates);
+             /*For Interactive Mode   get_penguin_coordinates(GS, &penguin_coordinates);*/
+             /*For Auto Mode*/ choose_penguin(GS,&penguin_coordinates);
 
                 /* Now that the penguin is selected we ask the player to select a destination to move to. We do this using get_destination_coordinates function and then store the coordinates in the destination_coordinates struct. */
 

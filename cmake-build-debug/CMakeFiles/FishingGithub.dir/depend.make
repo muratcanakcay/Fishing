@@ -8,6 +8,10 @@ CMakeFiles/FishingGithub.dir/choose_penguin.c.obj: ../neighbour_score_check.h
 CMakeFiles/FishingGithub.dir/destination_legality_check.c.obj: ../data_structures.h
 CMakeFiles/FishingGithub.dir/destination_legality_check.c.obj: ../destination_legality_check.c
 
+CMakeFiles/FishingGithub.dir/destination_score_check.c.obj: ../data_structures.h
+CMakeFiles/FishingGithub.dir/destination_score_check.c.obj: ../destination_score_check.c
+CMakeFiles/FishingGithub.dir/destination_score_check.c.obj: ../destination_score_check.h
+
 CMakeFiles/FishingGithub.dir/floe_availability_check.c.obj: ../data_structures.h
 CMakeFiles/FishingGithub.dir/floe_availability_check.c.obj: ../floe_availability_check.c
 
@@ -36,6 +40,7 @@ CMakeFiles/FishingGithub.dir/main.c.obj: ../player_generator.h
 CMakeFiles/FishingGithub.dir/map_generator.c.obj: ../data_structures.h
 CMakeFiles/FishingGithub.dir/map_generator.c.obj: ../map_generator.c
 
+CMakeFiles/FishingGithub.dir/move_penguins.c.obj: ../choose_penguin.h
 CMakeFiles/FishingGithub.dir/move_penguins.c.obj: ../data_structures.h
 CMakeFiles/FishingGithub.dir/move_penguins.c.obj: ../get_destination_coordinates.h
 CMakeFiles/FishingGithub.dir/move_penguins.c.obj: ../get_penguin_coordinates.h
@@ -49,13 +54,20 @@ CMakeFiles/FishingGithub.dir/movement_possibility_check.c.obj: ../movement_possi
 
 CMakeFiles/FishingGithub.dir/neighbour_score_check.c.obj: ../neighbour_score_check.c
 
+CMakeFiles/FishingGithub.dir/opening_score_check.c.obj: ../opening_score_check.c
+
 CMakeFiles/FishingGithub.dir/place_penguins.c.obj: ../data_structures.h
 CMakeFiles/FishingGithub.dir/place_penguins.c.obj: ../get_placement_coordinates.h
 CMakeFiles/FishingGithub.dir/place_penguins.c.obj: ../place_penguins.c
+CMakeFiles/FishingGithub.dir/place_penguins.c.obj: ../placement_score_check.h
 CMakeFiles/FishingGithub.dir/place_penguins.c.obj: ../update_map.h
 
 CMakeFiles/FishingGithub.dir/placement_legality_check.c.obj: ../data_structures.h
 CMakeFiles/FishingGithub.dir/placement_legality_check.c.obj: ../placement_legality_check.c
+
+CMakeFiles/FishingGithub.dir/placement_score_check.c.obj: ../data_structures.h
+CMakeFiles/FishingGithub.dir/placement_score_check.c.obj: ../opening_score_check.h
+CMakeFiles/FishingGithub.dir/placement_score_check.c.obj: ../placement_score_check.c
 
 CMakeFiles/FishingGithub.dir/player_generator.c.obj: ../data_structures.h
 CMakeFiles/FishingGithub.dir/player_generator.c.obj: ../player_generator.c

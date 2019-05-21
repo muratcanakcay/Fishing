@@ -8,6 +8,10 @@ CMakeFiles/FishingGithub.dir/choose_penguin.c.obj
 CMakeFiles/FishingGithub.dir/destination_legality_check.c.obj
  C:/Users/Suliaman/Documents/FishingGithub/data_structures.h
  C:/Users/Suliaman/Documents/FishingGithub/destination_legality_check.c
+CMakeFiles/FishingGithub.dir/destination_score_check.c.obj
+ C:/Users/Suliaman/Documents/FishingGithub/data_structures.h
+ C:/Users/Suliaman/Documents/FishingGithub/destination_score_check.c
+ C:/Users/Suliaman/Documents/FishingGithub/destination_score_check.h
 CMakeFiles/FishingGithub.dir/floe_availability_check.c.obj
  C:/Users/Suliaman/Documents/FishingGithub/data_structures.h
  C:/Users/Suliaman/Documents/FishingGithub/floe_availability_check.c
@@ -37,6 +41,7 @@ CMakeFiles/FishingGithub.dir/map_generator.c.obj
  C:/Users/Suliaman/Documents/FishingGithub/data_structures.h
  C:/Users/Suliaman/Documents/FishingGithub/map_generator.c
 CMakeFiles/FishingGithub.dir/move_penguins.c.obj
+ C:/Users/Suliaman/Documents/FishingGithub/choose_penguin.h
  C:/Users/Suliaman/Documents/FishingGithub/data_structures.h
  C:/Users/Suliaman/Documents/FishingGithub/get_destination_coordinates.h
  C:/Users/Suliaman/Documents/FishingGithub/get_penguin_coordinates.h
@@ -49,14 +54,21 @@ CMakeFiles/FishingGithub.dir/movement_possibility_check.c.obj
  C:/Users/Suliaman/Documents/FishingGithub/movement_possibility_check.c
 CMakeFiles/FishingGithub.dir/neighbour_score_check.c.obj
  C:/Users/Suliaman/Documents/FishingGithub/neighbour_score_check.c
+CMakeFiles/FishingGithub.dir/opening_score_check.c.obj
+ C:/Users/Suliaman/Documents/FishingGithub/opening_score_check.c
 CMakeFiles/FishingGithub.dir/place_penguins.c.obj
  C:/Users/Suliaman/Documents/FishingGithub/data_structures.h
  C:/Users/Suliaman/Documents/FishingGithub/get_placement_coordinates.h
  C:/Users/Suliaman/Documents/FishingGithub/place_penguins.c
+ C:/Users/Suliaman/Documents/FishingGithub/placement_score_check.h
  C:/Users/Suliaman/Documents/FishingGithub/update_map.h
 CMakeFiles/FishingGithub.dir/placement_legality_check.c.obj
  C:/Users/Suliaman/Documents/FishingGithub/data_structures.h
  C:/Users/Suliaman/Documents/FishingGithub/placement_legality_check.c
+CMakeFiles/FishingGithub.dir/placement_score_check.c.obj
+ C:/Users/Suliaman/Documents/FishingGithub/data_structures.h
+ C:/Users/Suliaman/Documents/FishingGithub/opening_score_check.h
+ C:/Users/Suliaman/Documents/FishingGithub/placement_score_check.c
 CMakeFiles/FishingGithub.dir/player_generator.c.obj
  C:/Users/Suliaman/Documents/FishingGithub/data_structures.h
  C:/Users/Suliaman/Documents/FishingGithub/player_generator.c

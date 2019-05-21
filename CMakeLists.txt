@@ -37,4 +37,9 @@ add_executable(FishingGithub
         print_map.c
         print_map.h
         update_map.c
-        update_map.h)
+        update_map.h
+        placement_score_check.c
+        placement_score_check.h
+        opening_score_check.c
+        opening_score_check.h
+        )
