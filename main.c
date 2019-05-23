@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 	/* if there's a problem with the input file exit program with error code 2, if placement or movement is not possible exit with error code 1 */
 
 	// ** debug **
-	if (GS.parameters.phase_mark != interactive)
+	if (GS.parameters.phase_mark != "interactive")
 	{
 		printf("read from file...\n");
 		print_map(GS);
