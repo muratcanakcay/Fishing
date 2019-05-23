@@ -192,9 +192,6 @@ int read_gamestate(GameState* GS_ptr)
     c = 0; // player data field (1=ID, 2=player no, 3=player score)
     n = 1; // player number
 
-	if (ch == ' ') printf("space-x\n");
-	if (ch == '\n') printf("Line Break-x\n");
-
 	/* the player data section starts with the ID of a player */
 
 	const char s[2] = " ";
@@ -212,6 +209,12 @@ int read_gamestate(GameState* GS_ptr)
 		/* advance through other tokens */
 	   	while(token != NULL)
 		{
+			if ((c == 2 || c == 3) && strcmp(token, "\n") == 0)
+			{
+				printf("%s\n", FILE_ERROR_4);
+				return 2;
+			}
+
 			if (c == 1) /* the ID of the player is in the token. store it in the array */
 	            strcpy(temp[n].player_ID, token);
 

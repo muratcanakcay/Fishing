@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     /* create parameters struct which holds the command line parameters */
     CommandLine parameters = {"", 0, "", ""};
     status_check = process_parameters(argc, argv, &parameters);
-    if (status_check == -1) return(0); /* if there's a problem with the command line parameters exit program with error code 0 */
+    if (status_check == -1) return(3); /* if there's a problem with the command line parameters exit program with error code 3 - internal error */
 
     // **** INITIALIZATION PHASE **** //
 
@@ -25,14 +25,16 @@ int main(int argc, char* argv[])
 	GameState GS;
 	GS.parameters = parameters;
     status_check = gamestate_generator(&GS);
-	// return status_check; /* if there's a problem with the input file exit program with error code 2, if placement or movement is not possible exit with error code 1 */
+	if (status_check == 2) return(2);
+	/* if there's a problem with the input file exit program with error code 2, if placement or movement is not possible exit with error code 1 */
 
 	// ** debug **
-
+	if (GS.parameters.phase_mark != interactive)
+	{
 		printf("read from file...\n");
 		print_map(GS);
 		return(0);
-
+	}
 
     // **** PLACEMENT PHASE **** //
 
