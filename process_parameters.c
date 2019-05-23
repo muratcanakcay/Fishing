@@ -18,7 +18,7 @@ int process_parameters(int argc, char** argv, CommandLine* parameters)
     if (argc == 1 || check_parameters(argc, argv) == -1)
     // if no parameters are entered or the parameters have errors
     {
-        printf("You must enter the necessary parameters correctly for the program to work\n\n- If entering file names both input and output filenames must be given.\n");
+        printf("%s\n", PARAMETER_ERROR_1);
         return(-1);
     }
 

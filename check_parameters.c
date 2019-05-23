@@ -64,4 +64,7 @@ int check_parameters(int argc, char** argv)
         printf("You have the give the names of the input and output files for autonomous mode to function\n");
         return(-1);
     }
+
+	// if no errors are found return 0
+	return 0;
 }

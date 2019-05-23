@@ -20,16 +20,16 @@ int main(int argc, char* argv[])
 
     // **** INITIALIZATION PHASE **** //
 
-    /* Call for the gamestate_generator function that will create the GS struct which holds all of the gamedata, based on the command line parameters entered during execution. */
+    /* Call for the gamestate_generator function that will populate the GS struct which holds all of the gamedata, based on the command line parameters entered during execution. */
 
 	GameState GS;
 	GS.parameters = parameters;
     status_check = gamestate_generator(&GS);
-	if (status_check == -1) return (2); /* if there's a problem with the input file exit program with error code 2 */
+	// return status_check; /* if there's a problem with the input file exit program with error code 2, if placement or movement is not possible exit with error code 1 */
 
 	// ** debug **
 
-		printf("reading from file...\n");
+		printf("read from file...\n");
 		print_map(GS);
 		return(0);
 

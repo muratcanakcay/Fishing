@@ -1,6 +1,11 @@
-#define ID "The Penguin Captains"  // Our team's ID
+#define ID "The_Penguin_Captains"  // Our team's ID
 
-#define FILE_ERROR_1 "Error in the input file - line 1. The first line should provide the the dimensions of the board as with a single space between the values (e.g. '14 16'). The first line cannot begin with a space or line break. The dimensions cannot start with zero or include a non-numerical character. More than two values on the first line is also not accepted. Exiting program..."
+#define PARAMETER_ERROR_1 "You must enter the command line parameters correctly for the program to execute\n"
+#define FILE_ERROR_1 "Error found in the first line of the input file. The first line should provide the dimensions of the board as with a single space between the values (e.g. '14 16'). The first line cannot begin with a space or line break. The dimensions cannot start with zero or include a non-numerical character. More than two values on the first line is also not accepted. Exiting program...\n"
+#define FILE_ERROR_2 "Error found in the map section of the input file. The map should provide fields seperated by single spaces, each field consisting of 2 digits. The first digit represents the number of fish (can only take values between 0-3) and the second digit represents the player's number (can take values between 1-9 or 0 if the tile is unoccupied). The lines cannot begin with a space or line break. There should be a single space between each field. The size of the map should match the map dimensions given in the first line of the file. A field with a player cannot have fish in it. Exiting program...\n"
+#define FILE_ERROR_3 "Error reading players data from file.\n\nThe data for the players should start immediately after the map data\nwith no empty lines or spaces!\n"
+#define FILE_ERROR_4 "Error reading players data from file.\n\nThe players data in the file has errors. The lines should not start with\nspaces and there should be single spaces between the data fields,\nwith no empty lines in between!\n"
+#define FILE_ERROR_99 "Error found in the file. Every player should have the same number of penguins in the movement phase!!! Exiting program...\n"
 
 
 /* The following struct is used to store, pass and return coordinates in the form of rows and columns */
