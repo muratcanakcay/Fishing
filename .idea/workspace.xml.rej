@@ -1,0 +1,43 @@
+diff a/.idea/workspace.xml b/.idea/workspace.xml	(rejected hunks)
+@@ -12,40 +12,18 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="71607bd8-ee0f-4eed-83e8-a2c8acb56a91" name="Default Changelist" comment="">
+-      <change afterPath="$PROJECT_DIR$/destination_score_check.c" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/destination_score_check.h" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.14.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.14.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.14.3/CompilerIdC/a.exe" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Fishimg_Ineractive.dir/choose_penguin.c.obj" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Fishimg_Ineractive.dir/neighbour_score_check.c.obj" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/C.includecache" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/choose_penguin.c" beforeDir="false" afterPath="$PROJECT_DIR$/choose_penguin.c" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/DependInfo.cmake" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/build.make" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/cmake_clean.cmake" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/depend.internal" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/depend.make" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/get_destination_coordinates.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/get_destination_coordinates.c.obj" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/move_penguins.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/move_penguins.c.obj" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/neighbour_score_check.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/neighbour_score_check.c.obj" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/objects.a" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/objects1.rsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/place_penguins.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/place_penguins.c.obj" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FishingGithub.dir/progress.make" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/feature_tests.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/feature_tests.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FishingGithub.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FishingGithub.cbp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FishingGithub.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FishingGithub.exe" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/get_destination_coordinates.c" beforeDir="false" afterPath="$PROJECT_DIR$/get_destination_coordinates.c" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/move_penguins.c" beforeDir="false" afterPath="$PROJECT_DIR$/move_penguins.c" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/neighbour_score_check.c" beforeDir="false" afterPath="$PROJECT_DIR$/neighbour_score_check.c" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/place_penguins.c" beforeDir="false" afterPath="$PROJECT_DIR$/place_penguins.c" afterDir="false" />
+     </list>
+     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
