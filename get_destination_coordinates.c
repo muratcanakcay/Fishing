@@ -17,6 +17,7 @@ void get_destination_coordinates(GameState GS,  coordinates * destination_coordi
     print_map(GS);
     do
     {
+        // All this is commented out because currently its selecting a destination randomly as long as its a legal move.
         // Ask for the row# of the destination.
         /*   do
            {
@@ -44,6 +45,7 @@ void get_destination_coordinates(GameState GS,  coordinates * destination_coordi
                scanf(" %d", &c);
            } while (c < 0 || c > columns);
            */
+        // selecting coordinates randomly
             r = rand()%rows + 1;
             c = rand()%columns + 1;
         // Check legality of the destination cell or whether the player asked to restart entering the coordinates.

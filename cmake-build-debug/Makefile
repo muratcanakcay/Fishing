@@ -176,33 +176,6 @@ destination_legality_check.c.s:
 	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/destination_legality_check.c.s
 .PHONY : destination_legality_check.c.s
 
-destination_score_check.obj: destination_score_check.c.obj
-
-.PHONY : destination_score_check.obj
-
-# target to build an object file
-destination_score_check.c.obj:
-	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/destination_score_check.c.obj
-.PHONY : destination_score_check.c.obj
-
-destination_score_check.i: destination_score_check.c.i
-
-.PHONY : destination_score_check.i
-
-# target to preprocess a source file
-destination_score_check.c.i:
-	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/destination_score_check.c.i
-.PHONY : destination_score_check.c.i
-
-destination_score_check.s: destination_score_check.c.s
-
-.PHONY : destination_score_check.s
-
-# target to generate assembly for a file
-destination_score_check.c.s:
-	$(MAKE) -f CMakeFiles\FishingGithub.dir\build.make CMakeFiles/FishingGithub.dir/destination_score_check.c.s
-.PHONY : destination_score_check.c.s
-
 floe_availability_check.obj: floe_availability_check.c.obj
 
 .PHONY : floe_availability_check.obj
@@ -650,9 +623,6 @@ help:
 	@echo ... destination_legality_check.obj
 	@echo ... destination_legality_check.i
 	@echo ... destination_legality_check.s
-	@echo ... destination_score_check.obj
-	@echo ... destination_score_check.i
-	@echo ... destination_score_check.s
 	@echo ... floe_availability_check.obj
 	@echo ... floe_availability_check.i
 	@echo ... floe_availability_check.s

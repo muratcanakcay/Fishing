@@ -6,7 +6,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/Suliaman/Documents/FishingGithub/choose_penguin.c" "C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/CMakeFiles/FishingGithub.dir/choose_penguin.c.obj"
   "C:/Users/Suliaman/Documents/FishingGithub/destination_legality_check.c" "C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/CMakeFiles/FishingGithub.dir/destination_legality_check.c.obj"
-  "C:/Users/Suliaman/Documents/FishingGithub/destination_score_check.c" "C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/CMakeFiles/FishingGithub.dir/destination_score_check.c.obj"
   "C:/Users/Suliaman/Documents/FishingGithub/floe_availability_check.c" "C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/CMakeFiles/FishingGithub.dir/floe_availability_check.c.obj"
   "C:/Users/Suliaman/Documents/FishingGithub/get_destination_coordinates.c" "C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/CMakeFiles/FishingGithub.dir/get_destination_coordinates.c.obj"
   "C:/Users/Suliaman/Documents/FishingGithub/get_penguin_coordinates.c" "C:/Users/Suliaman/Documents/FishingGithub/cmake-build-debug/CMakeFiles/FishingGithub.dir/get_penguin_coordinates.c.obj"

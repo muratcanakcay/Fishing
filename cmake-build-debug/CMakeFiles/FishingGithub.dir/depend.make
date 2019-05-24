@@ -8,10 +8,6 @@ CMakeFiles/FishingGithub.dir/choose_penguin.c.obj: ../neighbour_score_check.h
 CMakeFiles/FishingGithub.dir/destination_legality_check.c.obj: ../data_structures.h
 CMakeFiles/FishingGithub.dir/destination_legality_check.c.obj: ../destination_legality_check.c
 
-CMakeFiles/FishingGithub.dir/destination_score_check.c.obj: ../data_structures.h
-CMakeFiles/FishingGithub.dir/destination_score_check.c.obj: ../destination_score_check.c
-CMakeFiles/FishingGithub.dir/destination_score_check.c.obj: ../destination_score_check.h
-
 CMakeFiles/FishingGithub.dir/floe_availability_check.c.obj: ../data_structures.h
 CMakeFiles/FishingGithub.dir/floe_availability_check.c.obj: ../floe_availability_check.c
 

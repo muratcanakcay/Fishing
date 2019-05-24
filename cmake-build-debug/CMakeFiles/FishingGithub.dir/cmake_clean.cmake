@@ -17,7 +17,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/FishingGithub.dir/update_map.c.obj"
   "CMakeFiles/FishingGithub.dir/placement_score_check.c.obj"
   "CMakeFiles/FishingGithub.dir/opening_score_check.c.obj"
-  "CMakeFiles/FishingGithub.dir/destination_score_check.c.obj"
   "FishingGithub.pdb"
   "FishingGithub.exe"
   "FishingGithub.exe.manifest"

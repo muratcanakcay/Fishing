@@ -31,8 +31,12 @@ int move_penguins(GameState GS)
             {
                 /* Since the check returned a 1, the player has a penguin that can move, so we will ask for the player to select a penguin that can move. We do this using get_penguin_coordinates function which stores the coordinates in the penguin_coordinates struct. */
 
-             /*For Interactive Mode   get_penguin_coordinates(GS, &penguin_coordinates);*/
-             /*For Auto Mode*/ choose_penguin(GS,&penguin_coordinates);
+             /*For Interactive Mode
+                get_penguin_coordinates(GS, &penguin_coordinates);
+             */
+
+             /*For Auto Mode - This is the function in which the program chooses which penguin to move*/
+                choose_penguin(GS,&penguin_coordinates);
 
                 /* Now that the penguin is selected we ask the player to select a destination to move to. We do this using get_destination_coordinates function and then store the coordinates in the destination_coordinates struct. */
 
