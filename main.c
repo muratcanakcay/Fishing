@@ -1,23 +1,41 @@
 #include <stdio.h>
+#include <string.h>
 #include "data_structures.h"
-#include "player_generator.h"
-#include "map_generator.h"
+#include "process_parameters.h"
+#include "gamestate_generator.h"
 #include "place_penguins.h"
 #include "move_penguins.h"
 #include "print_map.h"
 
-int main()
+
+int main(int argc, char* argv[])
 {
+    int status_check;
+
+	// **** PROCESS COMMAND LINE PARAMETERS **** //
+
+    /* create parameters struct which holds the command line parameters */
+    CommandLine parameters = {"", 0, "", ""};
+    status_check = process_parameters(argc, argv, &parameters);
+    if (status_check == -1) return(3); /* if there's a problem with the command line parameters exit program with error code 3 - internal error */
+
     // **** INITIALIZATION PHASE **** //
 
-    /* Call for the player_generator function that will ask the users to input the player data (number of players, player IDs for each player and number of penguins) and create the players array containing the player structures containing the player data. When that's done call for the map_creator function that will ask for rows and columns, create the map array containing the ice_floe structures and randomly populate the ice_floes with fish, returning the ready-to-play map. Place both arrays in the GS struct. */
+    /* Call for the gamestate_generator function that will populate the GS struct which holds all of the gamedata, based on the command line parameters entered during execution. */
 
-    GameState GS = {
-                        {0, 0},                         // map dimensions
-                        0,                              // max_turns
-                        player_generator(&GS.max_turns),// players array
-                        map_generator(&GS.map_dims)     // map array
-                    };
+	GameState GS;
+	GS.parameters = parameters;
+    status_check = gamestate_generator(&GS);
+	if (status_check == 2) return(2);
+	/* if there's a problem with the input file exit program with error code 2, if placement or movement is not possible exit with error code 1 */
+
+	// ** debug **
+	if (strcmp(GS.parameters.phase_mark, "interactive") != 0)
+	{
+		printf("read from file...\n");
+		print_map(GS);
+		return(0);
+	}
 
     // **** PLACEMENT PHASE **** //
 
@@ -26,7 +44,10 @@ int main()
     // **** MOVEMENT PHASE **** //
 
 
-    move_penguins(GS); // when function exits game over
+
+
+    move_penguins(GS);
+
 
     return 0;
 }

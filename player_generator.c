@@ -3,7 +3,7 @@
 #include <string.h>
 #include "data_structures.h"
 
-player * player_generator(int* max_turns)
+player* player_generator(CommandLine parameters)
 {
     int p, n;
 
@@ -23,8 +23,8 @@ player * player_generator(int* max_turns)
 
     /* Create the player array of size n+1 (0th index + number of players).  This is the array used to hold the data for each player. The player 1's struct is placed at index#1, player 2's struct at index#2, etc. */
 
-    player * players;
-    players = (player *) malloc((n + 1) * sizeof(player));
+    player* players;
+    players = (player*) malloc((n + 1) * sizeof(player));
 
     /* Initialize the gamestate data. In players array index#0:
     - "player_no" variable is used to keep the total number of players
@@ -32,7 +32,7 @@ player * player_generator(int* max_turns)
     - "player_score" variable is used to keep the player_no of the current player
     - "player_ID" variable is used to store the no of penguins each player has. This is a character array so the value of the integer is kept as a character.) */
 
-    players[0].player_ID[0] = p; // total no of penguins // DISCARD IF NOT USED
+    players[0].player_ID[0] = p; // total no of penguins 
     players[0].player_no = n; // total no of players
     players[0].movement_possible = n; // no of players which can still move
     players[0].player_score = 0; // current_player
@@ -52,12 +52,6 @@ player * player_generator(int* max_turns)
             players[n].movement_possible = 1;
         } while (strlen(player_ID) < 1 || strlen(player_ID) > 30); /* This needs attention. When only enter is pressed how do we repeat the while loop? */
     }
-
-    do
-    {
-        printf("Enter number of turns you want the game to last (0 for unlimited): ");
-        scanf(" %d", max_turns);
-    } while (*max_turns < 0);
 
     return players;
 }
