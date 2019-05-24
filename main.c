@@ -43,7 +43,11 @@ int main(int argc, char* argv[])
 
     // **** MOVEMENT PHASE **** //
 
+
+
+
     move_penguins(GS);
+
 
     return 0;
 }

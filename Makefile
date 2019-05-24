@@ -1,4 +1,5 @@
-objects = main.o process_parameters.o check_parameters.o gamestate_generator.o player_generator.o map_generator.o read_gamestate.o print_map.o place_penguins.o get_placement_coordinates.o placement_legality_check.o move_penguins.o movement_possibility_check.o floe_availability_check.o update_map.o get_penguin_coordinates.o get_destination_coordinates.o destination_legality_check.o write_gamestate.o
+objects = main.o process_parameters.o check_parameters.o gamestate_generator.o player_generator.o map_generator.o read_gamestate.o print_map.o place_penguins.o get_placement_coordinates.o placement_legality_check.o move_penguins.o movement_possibility_check.o floe_availability_check.o update_map.o get_penguin_coordinates.o get_destination_coordinates.o destination_legality_check.o write_gamestate.o placement_score_check.o
+
 
 penguins : $(objects)
 	cc -o penguins $(objects)
@@ -15,9 +16,11 @@ write_gamestate.o: data_structures.h
 
 print_map.o : data_structures.h
 update_map.o : data_structures.h
+placement_score_check.o : opening_score_check.h data_structures.h
 
-place_penguins.o : get_placement_coordinates.h update_map.h data_structures.h
-move_penguins.o : movement_possibility_check.h get_penguin_coordinates.h \
+
+place_penguins.o : get_placement_coordinates.h update_map.h data_structures.h fishai.h
+move_penguins.o : movement_possibility_check.h get_penguin_coordinates.h
  				  get_destination_coordinates.h update_map.h data_structures.h
 
 placement_legality_check.o : data_structures.h
@@ -41,5 +44,5 @@ clean :
 # player_generation: player_generator.c
 # 	cc -o player_generator player_generator.c
 #
-# map_generator: map_generator.c
-# 	cc -o map_generator map_generator.c
+# map_creator: map_creator.c
+# 	cc -o map_creator map_creator.c
