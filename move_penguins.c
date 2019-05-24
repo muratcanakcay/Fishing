@@ -17,7 +17,7 @@ int move_penguins(GameState GS)
     int current_player, current_turn = 1;
     coordinates penguin_coordinates, destination_coordinates;
 
-    while((GS.max_turns == 0) || (current_turn <= GS.max_turns) && GS.players[0].movement_possible > 0)
+    while(GS.players[0].movement_possible > 0)
     {
         for(current_player = 1; current_player <= total_players; current_player++)
         {
@@ -54,8 +54,5 @@ int move_penguins(GameState GS)
             //     getchar();
             // }
         }
-
-        current_turn += 1;
-
     }
 }

@@ -3,6 +3,7 @@
 #include "data_structures.h"
 #include "print_map.h"
 #include "destination_legality_check.h"
+#include "write_gamestate.h"
 
 void get_destination_coordinates(GameState GS,  coordinates * destination_coordinates, coordinates penguin_coordinates)
 {
@@ -36,9 +37,10 @@ void get_destination_coordinates(GameState GS,  coordinates * destination_coordi
         {
             print_map(GS);
 
-            printf("\n%s please enter the coordinates of the ice floe you want to move to (Enter 0 to re-start):\n", GS.players[current_player].player_ID);
+            printf("\n%s please enter the coordinates of the ice floe you want to move to (Enter 0 to re-start, -1 to WRITE GAMESTATE TO FILE):\n", GS.players[current_player].player_ID);
             printf("Column# (1-%d) : ", columns);
             scanf(" %d", &c);
+			if (c == -1) write_gamestate(GS, "test.txt");
         } while (c < 0 || c > columns);
 
         // Check legality of the destination cell or whether the player asked to restart entering the coordinates.

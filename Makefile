@@ -1,12 +1,17 @@
-objects = main.o player_generator.o map_generator.o print_map.o place_penguins.o get_placement_coordinates.o placement_legality_check.o move_penguins.o movement_possibility_check.o floe_availability_check.o update_map.o get_penguin_coordinates.o get_destination_coordinates.o destination_legality_check.o
+objects = main.o process_parameters.o check_parameters.o gamestate_generator.o player_generator.o map_generator.o read_gamestate.o print_map.o place_penguins.o get_placement_coordinates.o placement_legality_check.o move_penguins.o movement_possibility_check.o floe_availability_check.o update_map.o get_penguin_coordinates.o get_destination_coordinates.o destination_legality_check.o write_gamestate.o
 
 penguins : $(objects)
 	cc -o penguins $(objects)
 
-main.o : player_generator.h map_generator.h place_penguins.h move_penguins.h data_structures.h
+main.o : process_parameters.h gamestate_generator.h place_penguins.h move_penguins.h data_structures.h print_map.h
 
+process_parameters.o : check_parameters.o data_structures.h
+
+gamestate_generator.o : player_generator.h map_generator.h read_gamestate.h data_structures.h
 player_generator.o : data_structures.h
 map_generator.o : data_structures.h
+read_gamestate.o : data_structures.h
+write_gamestate.o: data_structures.h
 
 print_map.o : data_structures.h
 update_map.o : data_structures.h
@@ -22,7 +27,7 @@ destination_legality_check.o : data_structures.h
 
 get_placement_coordinates.o : placement_legality_check.h print_map.h data_structures.h
 get_penguin_coordinates.o : floe_availability_check.h print_map.h data_structures.h
-get_destination_coordinates.o : destination_legality_check.h print_map.h data_structures.h
+get_destination_coordinates.o : destination_legality_check.h print_map.h data_structures.h write_gamestate.h
 
 
 
