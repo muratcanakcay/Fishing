@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "data_structures.h"
 #include "print_map.h"
 #include "placement_legality_check.h"
@@ -42,6 +43,8 @@ void get_placement_coordinates(GameState GS, coordinates * placement_coordinates
             scanf(" %d", &c);
         } while (c < 0 || c > columns);
 
+		if (DEBUG) printf("coordinates obtained\n");
+
         // Check legality of the selected cell or whether the player asked to restart entering the coordinates.
         if (c == 0 ) placement_legality = 0;
         else placement_legality = placement_legality_check(GS, r-1, c-1);
@@ -49,6 +52,8 @@ void get_placement_coordinates(GameState GS, coordinates * placement_coordinates
     } while (placement_legality != 1); // If the player wishes to restart entering the coordinates or if the selected coordinates is illegal then ask for the coordinates again.
 
     // Store the selected coordinates.
+	if (DEBUG) printf("storing coordinate\n");
     placement_coordinates->r = r-1;
     placement_coordinates->c = c-1;
+	if (DEBUG) printf("coordinates stored\n");
 }

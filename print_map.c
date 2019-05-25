@@ -16,7 +16,7 @@ void print_map(GameState GS)
 
     // system("cls");
 
-    system("clear");
+    // system("clear");
 
 
     // Print column numbers

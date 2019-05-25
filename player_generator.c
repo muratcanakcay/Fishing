@@ -7,19 +7,34 @@ player* player_generator(CommandLine parameters)
 {
     int p, n;
 
-    // Ask for the number of players and the number of penguins
+    /* interactive mode: ask for the number of players and the number of penguins */
 
-    do
-    {
-        printf("How many players will play the game? (1-9) : ");
-        scanf("%d", &n);
-    } while (n < 1 || n > 9);
+    if (strcmp (parameters.phase_mark, "interactive") == 0)
+	{
+		printf("INTERACTIVE MODE\n");
+		do
+	    {
+	        printf("How many players will play the game? (1-9) : ");
+	        scanf("%d", &n);
+	    } while (n < 1 || n > 9);
 
-    do
-    {
-        printf("How many penguins will each player have? (1-3) : ");
-        scanf("%d", &p);
-    } while (p < 1 || p > 3);
+
+
+	}
+
+	/* pve mode: players = 2, ask number user for of penguins */
+
+	if (strcmp (parameters.phase_mark, "pve") == 0)
+
+	n = 2;
+
+	printf("PVE MODE\n");
+
+	do
+   	{
+	   	printf("How many penguins will each player have? (1-3) : ");
+	   	scanf("%d", &p);
+   	}	while (p < 1 || p > 3);
 
     /* Create the player array of size n+1 (0th index + number of players).  This is the array used to hold the data for each player. The player 1's struct is placed at index#1, player 2's struct at index#2, etc. */
 
@@ -32,7 +47,7 @@ player* player_generator(CommandLine parameters)
     - "player_score" variable is used to keep the player_no of the current player
     - "player_ID" variable is used to store the no of penguins each player has. This is a character array so the value of the integer is kept as a character.) */
 
-    players[0].player_ID[0] = p; // total no of penguins 
+    players[0].player_ID[0] = p; // total no of penguins
     players[0].player_no = n; // total no of players
     players[0].movement_possible = n; // no of players which can still move
     players[0].player_score = 0; // current_player
@@ -47,11 +62,14 @@ player* player_generator(CommandLine parameters)
             printf("Enter Player %d's ID (max. 30 characters): ", n);
             scanf(" %s", player_ID);
             strcpy(players[n].player_ID, player_ID);
-            players[n].player_no = n;
+			players[n].player_no = n;
             players[n].player_score = 0;
             players[n].movement_possible = 1;
         } while (strlen(player_ID) < 1 || strlen(player_ID) > 30); /* This needs attention. When only enter is pressed how do we repeat the while loop? */
     }
 
-    return players;
+	if (strcmp (parameters.phase_mark, "pve") == 0)
+		strcpy(players[2].player_ID, "Computer");
+
+	return players;
 }

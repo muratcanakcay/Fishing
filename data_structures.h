@@ -1,4 +1,6 @@
 #define ID "The_Penguin_Captains"  // Our team's ID
+#define DEBUG_DATA_FILE "test.txt"
+#define DEBUG "1"
 
 #define PARAMETER_ERROR_1 "\n\nYou must enter the command line parameters correctly for the program to execute\n"
 #define FILE_ERROR_1 "\n\nError found in the first line of the input file. The first line should provide the dimensions of the board as with a single space between the values (e.g. '14 16'). The first line cannot begin with a space or line break. The dimensions cannot start with zero or include a non-numerical character. More than two values on the first line is also not accepted. Exiting program...\n"
@@ -6,6 +8,7 @@
 #define FILE_ERROR_3 "\n\nError reading players data from file.\n\nThe data for the players should start immediately after the map data with no empty lines or spaces!\n"
 #define FILE_ERROR_4 "\n\nError reading players data from file.\n\nThe players data in the file has errors. Each player should have an ID, player_no and player_score field provided in the file"
 #define FILE_ERROR_99 "\n\nError found in the file. Every player should have the same number of penguins in the movement phase!!! Exiting program...\n"
+
 
 
 /* The following struct is used to store, pass and return coordinates in the form of rows and columns */

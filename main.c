@@ -30,20 +30,23 @@ int main(int argc, char* argv[])
 	/* if there's a problem with the input file exit program with error code 2, if placement or movement is not possible exit with error code 1 */
 
 	// ** debug **
-	if (strcmp(GS.parameters.phase_mark, "interactive") != 0)
-	{
-		printf("read from file...\n");
-		print_map(GS);
-		return(0);
-	}
+	// if (strcmp(GS.parameters.phase_mark, "interactive") != 0
+	// 	&& strcmp(DEBUG, "yes") == 0)
+	// {
+	// 	printf("read from file...\n");
+	// 	print_map(GS);
+	// 	return(0);
+	// }
 
     // **** PLACEMENT PHASE **** //
 
-    place_penguins(GS);
+	if (DEBUG) printf("Proceeding to placement phase\n");
+
+	place_penguins(GS);
 
     // **** MOVEMENT PHASE **** //
 
-
+	if (DEBUG) printf("Proceeding to movement phase\n");
 
 
     move_penguins(GS);

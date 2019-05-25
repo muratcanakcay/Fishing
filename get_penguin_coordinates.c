@@ -3,6 +3,7 @@
 #include "data_structures.h"
 #include "print_map.h"
 #include "floe_availability_check.h"
+#include "write_gamestate.h"
 #include <time.h>
 
 void get_penguin_coordinates(GameState GS,  coordinates * penguin_coordinates)
@@ -33,6 +34,7 @@ void get_penguin_coordinates(GameState GS,  coordinates * penguin_coordinates)
             printf("\n%s please enter the coordinates of the penguin you want to move :\n", GS.players[current_player].player_ID);
             printf("Row# (1-%d) : ", rows);
             scanf(" %d", &r);
+			if (c == -1) write_gamestate(GS, DEBUG_DATA_FILE);
         } while (r < 1 || r > rows);
 
         // Ask for the column# of the penguin.
