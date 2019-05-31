@@ -1,5 +1,6 @@
 #define ID "The_Penguin_Captains"  // Our team's ID
 #define DEBUG_DATA_FILE "test.txt"
+#define AI_RANDOM_MOVE "1"
 #define DEBUG "1"
 
 #define PARAMETER_ERROR_1 "\n\nYou must enter the command line parameters correctly for the program to execute\n"

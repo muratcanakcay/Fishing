@@ -48,9 +48,7 @@ int main(int argc, char* argv[])
 
 	if (DEBUG) printf("Proceeding to movement phase\n");
 
-
     move_penguins(GS);
-
 
     return 0;
 }

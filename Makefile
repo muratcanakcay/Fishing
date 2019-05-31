@@ -1,4 +1,4 @@
-objects = main.o process_parameters.o check_parameters.o gamestate_generator.o player_generator.o map_generator.o read_gamestate.o print_map.o place_penguins.o get_placement_coordinates.o placement_legality_check.o move_penguins.o movement_possibility_check.o floe_availability_check.o update_map.o get_penguin_coordinates.o get_destination_coordinates.o destination_legality_check.o write_gamestate.o placement_score_check.o opening_score_check.o
+objects = main.o process_parameters.o check_parameters.o gamestate_generator.o player_generator.o map_generator.o read_gamestate.o print_map.o place_penguins.o get_placement_coordinates.o placement_legality_check.o move_penguins.o movement_possibility_check.o floe_availability_check.o update_map.o get_penguin_coordinates.o get_destination_coordinates.o destination_legality_check.o write_gamestate.o placement_score_check.o opening_score_check.o choose_penguin.o neighbour_score_check.o
 
 
 penguins : $(objects)
@@ -17,6 +17,8 @@ write_gamestate.o: data_structures.h
 print_map.o : data_structures.h
 update_map.o : data_structures.h
 placement_score_check.o : opening_score_check.h data_structures.h -lm
+choose_penguin.o : neighbour_score_check.h data_structures.h -lm
+   
 
 
 place_penguins.o : get_placement_coordinates.h update_map.h data_structures.h
