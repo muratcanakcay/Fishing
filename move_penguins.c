@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "data_structures.h"
 #include "movement_possibility_check.h"
 #include "get_penguin_coordinates.h"
 #include "get_destination_coordinates.h"
 #include "update_map.h"
+#include "choose_penguin.h"
 
 /* In this function, each player who has a possible move is asked to pick a penguin and choose a destination cell for that penguin. Then the legality of that move is checked and if the move is legal the penguin is taken to the new cell, i.e. the map and the scoreboard is updated. Then the loop repeats for the next player. */
 
@@ -30,9 +32,38 @@ int move_penguins(GameState GS)
             {
                 /* Since the check returned a 1, the player has a penguin that can move, so we will ask for the player to select a penguin that can move. We do this using get_penguin_coordinates function which stores the coordinates in the penguin_coordinates struct. */
 
-                get_penguin_coordinates(GS, &penguin_coordinates);
 
-                /* Now that the penguin is selected we ask the player to select a destination to move to. We do this using get_destination_coordinates function and then store the coordinates in the destination_coordinates struct. */
+
+				// for interactive mode
+				if (strcmp (GS.parameters.phase_mark, "interactive") == 0)
+					get_penguin_coordinates(GS, &penguin_coordinates); // Get placement coordinates from the player.
+
+
+				// for autonomous mode
+				if (strcmp (GS.parameters.phase_mark, "placement") == 0)
+					choose_penguin(GS, &penguin_coordinates);
+					// Computer decides where to place
+
+				// for pve mode
+				if (strcmp (GS.parameters.phase_mark, "pve") == 0	&& current_player == 1)
+				{
+					if (DEBUG)
+						printf("pve mode - get placement coordinates from player\n");
+					get_penguin_coordinates(GS, &penguin_coordinates);
+				}
+
+				if (strcmp (GS.parameters.phase_mark, "pve") == 0	&& current_player == 2)
+				{
+					if (DEBUG)
+						printf("pve mode - get placement coordinates from computer\n");
+					choose_penguin(GS, &penguin_coordinates);
+					// Computer decides where to place
+				}
+
+				if (DEBUG)
+					printf("penguin's coordinates received. asking for destination... \n");
+
+				/* Now that the penguin is selected we ask the player to select a destination to move to. We do this using get_destination_coordinates function and then store the coordinates in the destination_coordinates struct. */
 
                 get_destination_coordinates(GS, &destination_coordinates, penguin_coordinates);
 
