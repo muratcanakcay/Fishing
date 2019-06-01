@@ -7,7 +7,7 @@
 #include <time.h>
 
 
-void get_destination_coordinates(GameState GS,  coordinates * destination_coordinates, coordinates penguin_coordinates)
+void get_destination_coordinates(GameState GS, coordinates* destination_coordinates, coordinates penguin_coordinates)
 {
 	if (DEBUG) printf("********* GET_DESTINATION_COORDINATES\n");
 
@@ -17,6 +17,8 @@ void get_destination_coordinates(GameState GS,  coordinates * destination_coordi
     int columns = GS.map_dims.c;
     int current_player = GS.players[0].player_score;
     int r, c, destination_legality = 1;
+
+
     // Ask the player for the coordinates of the destination cell
 
     if (strcmp(GS.parameters.phase_mark, "pve") == 0 && current_player == 1 || !AI_RANDOM_MOVE) do
@@ -40,7 +42,10 @@ void get_destination_coordinates(GameState GS,  coordinates * destination_coordi
 
             printf("\n%s please enter the coordinates of the ice floe you want to move to :\n", GS.players[current_player].player_ID);
             printf("Row# (1-%d) : ", rows);
-            scanf(" %d", &r);
+			if (scanf("%d", &r) == 0)
+    			while (getchar() != '\n')
+      				;
+
         } while (r < 1 || r > rows);
 
         // Ask for the column# of the penguin.
@@ -50,7 +55,10 @@ void get_destination_coordinates(GameState GS,  coordinates * destination_coordi
 
             printf("\n%s please enter the coordinates of the ice floe you want to move to (Enter 0 to re-start, -1 to WRITE GAMESTATE TO FILE):\n", GS.players[current_player].player_ID);
             printf("Column# (1-%d) : ", columns);
-            scanf(" %d", &c);
+			if (scanf("%d", &c) == 0)
+    			while (getchar() != '\n')
+      				;
+					
 		} while (c < 0 || c > columns);
 
 
@@ -64,11 +72,14 @@ void get_destination_coordinates(GameState GS,  coordinates * destination_coordi
 
     } while (destination_legality != 1); // If the player wishes to restart entering the coordinates or if the selected coordinates is illegal then ask for the coordinates again.
 
-	if (AI_RANDOM_MOVE && strcmp(GS.parameters.phase_mark, "pve") == 0 && current_player == 2) // select coordinates randomly
+	if (AI_RANDOM_MOVE && strcmp(GS.parameters.phase_mark, "pve") == 0 && current_player == 2) do // select coordinates randomly
 	{
-		    r = rand()%rows + 1;
-            c = rand()%columns + 1;
-	}
+		r = rand()%rows + 1;
+        c = rand()%columns + 1;
+		coordinates given_coordinates = {r-1, c-1};
+		destination_legality = destination_legality_check(GS, given_coordinates, penguin_coordinates);
+
+	} while (destination_legality != 1);
 
 
    // printf("\n");

@@ -48,10 +48,13 @@ int process_parameters(int argc, char** argv, CommandLine* parameters)
         strcpy(parameters->outputboardfile, output_file);
     }
 
-	printf("Phase: %s\n", parameters->phase_mark);
-	printf("Penguins: %d\n", parameters->N);
-	printf("Input file: %s\n", parameters->inputboardfile);
-	printf("Output file: %s\n", parameters->outputboardfile);
+	if (DEBUG)
+	{
+		printf("Phase: %s\n", parameters->phase_mark);
+		printf("Penguins: %d\n", parameters->N);
+		printf("Input file: %s\n", parameters->inputboardfile);
+		printf("Output file: %s\n", parameters->outputboardfile);
+	}
 
 	return(0);
 }

@@ -6,13 +6,13 @@ penguins : $(objects)
 
 main.o : process_parameters.h gamestate_generator.h place_penguins.h move_penguins.h data_structures.h print_map.h
 
-process_parameters.o : check_parameters.o data_structures.h
+process_parameters.o : check_parameters.h data_structures.h
 check_parameters.o : data_structures.h
 
 gamestate_generator.o : player_generator.h map_generator.h read_gamestate.h data_structures.h
 player_generator.o : data_structures.h
 map_generator.o : data_structures.h
-read_gamestate.o : data_structures.h
+read_gamestate.o : player_generator.h data_structures.h
 write_gamestate.o: data_structures.h
 
 print_map.o : data_structures.h

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "data_structures.h"
+#include "player_generator.h"
 
 /* This function reads the gamestate data from a given file and populates the GameState struct with that data. If there are any errors in the file it displays appropriate messages and returns the error code -1. If the file is read without errors it returns 0 */
 
@@ -31,9 +32,11 @@ int read_gamestate(GameState* GS_ptr)
 		return 2;
 	}
 
-	printf("File opened\n\n"); // the input file is found and opened
+	if (DEBUG) printf("File %s opened\n\n", GS_ptr->parameters.inputboardfile); // the input file is found and opened
 
 	/* read the dimensions of the map from line 1 of the file */
+
+	if (DEBUG) printf("Reading dimensions from line 1\n");
 
     while (1)
     {
@@ -98,12 +101,16 @@ int read_gamestate(GameState* GS_ptr)
 
     /* Now that the dimensions of the map are read from file we create the map array based on these dimensions, and continue parsing the file and fill in the map array with fish and player data until we reach player ID. */
 
+	if (DEBUG) printf("Creating map array...\n");
+
 	ice_floe ** map = malloc(rows * sizeof(ice_floe *));
     for (int i = 0; i < rows; i++) map[i] = malloc(columns * sizeof(ice_floe));
 
 	/* Iterating through the row and columns we read values and pass them into their respective variables - fish or penguin_owner - in the ice_floe structures located in each cell of the  map array. */
 
-    for (r = 0; r < rows; r++)
+	if (DEBUG) printf("Reading map data from file...\n");
+
+	for (r = 0; r < rows; r++)
     {
         for (c = 0; c < columns; c++)
         {
@@ -152,19 +159,29 @@ int read_gamestate(GameState* GS_ptr)
 		}
     }
 
-	// *debug* print the map that was read from the file
-    for (r = 0; r < rows; r++)
-    {
-        for (c = 0; c < columns; c++)
-            printf("%d%d ", map[r][c].fish, map[r][c].penguin_owner);
-
-        printf("\n");
-    }
+	if (DEBUG) // print the map that was read from the file
+    	for (r = 0; r < rows; r++)
+    	{
+	        for (c = 0; c < columns; c++)
+	            printf("%d%d ", map[r][c].fish, map[r][c].penguin_owner);
+	        printf("\n");
+	    }
 
     // Now the map is transferred to the map array. We continue parsing the file to transfer the player information present in the file to the player array.
 
-    // First we create a temporary array to store player data and initialize values at index 0.
+	if (strcmp(GS_ptr->parameters.phase_mark, "pve") == 0)
+	{
+		if (DEBUG) printf("Pve mode. Asking player info...\n");
+		GS_ptr->map_dims.r = rows;           			// map dimensions
+		GS_ptr->map_dims.c = columns;
+		GS_ptr->players = player_generator(GS_ptr->parameters); // players array
+		GS_ptr->map = map;  							// map array
+		return 0;
+	}
 
+
+	// First we create a temporary array to store player data and initialize values at index 0.
+	if (DEBUG) printf("Creating temporary players array...\n");
     player temp[30]; /* temporary array to store player structs */
 
 	/* initialize the game data stored at index 0: */
@@ -199,6 +216,8 @@ int read_gamestate(GameState* GS_ptr)
 	char *token;
 	char line[256];
 	n = 1;
+
+	if (DEBUG) printf("Reading players data from file...\n");
 
 	while (fgets(line, sizeof(line), fp))
 	{
@@ -244,7 +263,7 @@ int read_gamestate(GameState* GS_ptr)
 
 	if (temp[0].player_score == 0) // if our team is not in the file
 	{
-		printf("Adding our team to the list as player #n\n");
+		printf("Adding our team to the list as player #%d\n", n);
 
 		n = temp[0].player_score = temp[0].player_no + 1;
 

@@ -18,7 +18,7 @@ void get_penguin_coordinates(GameState GS,  coordinates * penguin_coordinates)
     int r, c, selection_legality = 1;
 
     // Ask the player for the coordinates of the penguin
-    print_map(GS);
+
     printf("\n\n\n");
     do
     {
@@ -35,8 +35,11 @@ void get_penguin_coordinates(GameState GS,  coordinates * penguin_coordinates)
 
             printf("\n%s please enter the coordinates of the penguin you want to move :\n", GS.players[current_player].player_ID);
             printf("Row# (1-%d) : ", rows);
-            scanf(" %d", &r);
-			if (c == -1) write_gamestate(GS, DEBUG_DATA_FILE);
+			if (scanf("%d", &r) == 0)
+    			while (getchar() != '\n')
+      				;
+
+			if (r == -1) write_gamestate(GS, DEBUG_DATA_FILE);
         } while (r < 1 || r > rows);
 
         // Ask for the column# of the penguin.
@@ -46,7 +49,10 @@ void get_penguin_coordinates(GameState GS,  coordinates * penguin_coordinates)
 
             printf("\n%s please enter the coordinates of the penguin you want to move (Enter 0 to re-start):\n", GS.players[current_player].player_ID);
             printf("Column# (1-%d) : ", columns);
-            scanf(" %d", &c);
+			if (scanf("%d", &c) == 0)
+    			while (getchar() != '\n')
+      				;
+					
         } while (c < 0 || c > columns);
 
         // Check legality of the selected penguin or whether the player asked to restart entering the coordinates.

@@ -17,25 +17,26 @@ player* player_generator(CommandLine parameters)
 		do
 	    {
 	        printf("How many players will play the game? (1-9) : ");
-	        scanf("%d", &n);
+			if (scanf(" %d", &n) == 0)
+    			while (getchar() != '\n')
+      				;
 	    } while (n < 1 || n > 9);
-
-
-
 	}
 
 	/* pve mode: players = 2, ask number user for of penguins */
 
 	if (strcmp (parameters.phase_mark, "pve") == 0)
-
-	n = 2;
-
-	printf("PVE MODE\n");
+	{
+		n = 2;
+		printf("PVE MODE\n");
+	}
 
 	do
    	{
 	   	printf("How many penguins will each player have? (1-3) : ");
-	   	scanf("%d", &p);
+		if (scanf(" %d", &p) == 0)
+			while (getchar() != '\n')
+				;
    	}	while (p < 1 || p > 3);
 
     /* Create the player array of size n+1 (0th index + number of players).  This is the array used to hold the data for each player. The player 1's struct is placed at index#1, player 2's struct at index#2, etc. */
@@ -61,17 +62,23 @@ player* player_generator(CommandLine parameters)
         char player_ID[30];
         do
         {
-            printf("Enter Player %d's ID (max. 30 characters): ", n);
+			printf("Enter Player %d's ID (max. 30 characters): ", n);
             scanf(" %s", player_ID);
             strcpy(players[n].player_ID, player_ID);
 			players[n].player_no = n;
             players[n].player_score = 0;
             players[n].movement_possible = 1;
         } while (strlen(player_ID) < 1 || strlen(player_ID) > 30); /* This needs attention. When only enter is pressed how do we repeat the while loop? */
+		if (strcmp (parameters.phase_mark, "pve") == 0)
+		{
+			strcpy(players[2].player_ID, "Computer");
+			if (DEBUG) printf("Player 2's ID assigned as 'Computer'\n");
+			players[2].player_no = 2;
+            players[2].player_score = 0;
+            players[2].movement_possible = 1;
+			break;
+		}
     }
-
-	if (strcmp (parameters.phase_mark, "pve") == 0)
-		strcpy(players[2].player_ID, "Computer");
 
 	return players;
 }

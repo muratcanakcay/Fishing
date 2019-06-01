@@ -5,12 +5,12 @@
 #include "update_map.h"
 #include "get_placement_coordinates.h"
 #include "placement_score_check.h"
-#include "print_map.h"
+
 
 int place_penguins(GameState GS)
 {
 	if (DEBUG) printf("********* PLACE_PENGUINS\n");
-	
+
 	// Pull the gamestate values from GS into local variables
     int total_players = GS.players[0].player_no;
     int total_penguins = (int)(GS.players[0].player_ID[0]);
@@ -49,7 +49,7 @@ int place_penguins(GameState GS)
 				&& current_player == 2)
 			{
 				if (DEBUG)
-					printf("pve mode - get placement coordinates from computer\n");
+					printf("pve mode - computer chooses placement coordinates\n");
 				placement_score_check(GS, &placement_coordinates);
 			}
 

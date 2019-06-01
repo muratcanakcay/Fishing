@@ -15,7 +15,8 @@ void get_placement_coordinates(GameState GS, coordinates * placement_coordinates
     int rows = GS.map_dims.r;
     int columns = GS.map_dims.c;
     int current_player = GS.players[0].player_score;
-    int r, c, placement_legality = 1;
+    int r, c, scan_result, placement_legality = 1;
+
 
     // Ask the current player for the coordinates to place the penguin
     do
@@ -23,7 +24,9 @@ void get_placement_coordinates(GameState GS, coordinates * placement_coordinates
         // Ask for the row# to place the penguin.
         do
         {
-            print_map(GS);
+            r = 0;
+			print_map(GS);
+			if (DEBUG) printf("asking for the row number\n");
 
             // If the selected ice floe is illegal or the player asked to re-enter the coordinates inform the player.
             if (placement_legality == 0) printf("You've asked to re-enter the coordinates.");
@@ -31,18 +34,30 @@ void get_placement_coordinates(GameState GS, coordinates * placement_coordinates
             if (placement_legality == -2) printf("That ice floe has more than one fish!! Please enter other coordinates!");
 
             printf("\n%s please enter the coordinates of the ice floe to place your penguin #%d :\n", GS.players[current_player].player_ID, current_penguin);
-            printf("Row# (1-%d) : ", rows);
-            scanf(" %d", &r);
-        } while (r < 1 || r > rows);
+
+			printf("Row# (1-%d) : ", rows);
+
+			if (scanf(" %d", &r) == 0)
+    			while (getchar() != '\n')
+      				;
+
+			if (DEBUG) printf("the row number entered is %d\n", r);
+        } while (r < 1 || r > rows || scan_result == 0);
 
         // Ask for the column# to place the penguin.
         do
         {
-            print_map(GS);
+			c = 0;
+			print_map(GS);
+			if (DEBUG) printf("asking for the column number\n");
 
             printf("\n%s please enter the coordinates of the ice floe to place your penguin #%d (Enter 0 to re-start):\n", GS.players[current_player].player_ID, current_penguin);
             printf("Column# (1-%d) : ", columns);
-            scanf(" %d", &c);
+			if (scanf(" %d", &c) == 0)
+    			while (getchar() != '\n')
+      				;
+
+			if (DEBUG) printf("the column number entered is %d\n", r);
         } while (c < 0 || c > columns);
 
 		if (DEBUG) printf("coordinates obtained\n");
