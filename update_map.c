@@ -6,7 +6,9 @@
 
 int update_map(GameState GS, coordinates penguin_coordinates, coordinates destination_coordinates)
 {
-    int r, c, current_player = GS.players[0].player_score;
+	if (DEBUG) printf("********* UPDATE_MAP\n");
+
+	int r, c, current_player = GS.players[0].player_score;
 
     // Update the cell the penguin is departing from - if such cell exists
     if (penguin_coordinates.r != -1)

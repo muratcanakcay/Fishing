@@ -9,7 +9,9 @@
 
 void get_placement_coordinates(GameState GS, coordinates * placement_coordinates, int current_penguin)
 {
-    // Pull the gamestate values from GS into local variables
+	if (DEBUG) printf("********* GET_PLACEMENT_COORDINATES\n");
+
+	// Pull the gamestate values from GS into local variables
     int rows = GS.map_dims.r;
     int columns = GS.map_dims.c;
     int current_player = GS.players[0].player_score;

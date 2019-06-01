@@ -8,7 +8,9 @@
 
 int process_parameters(int argc, char** argv, CommandLine* parameters)
 {
-    if (argc==2 && strcmp(argv[1], "id") == 0)
+	if (DEBUG) printf("********* PROCESS_PARAMETERS\n");
+
+	if (argc==2 && strcmp(argv[1], "id") == 0)
     // if the only parameter is "id" the game displays our team's ID and exits
     {
         printf("%s\n", ID);

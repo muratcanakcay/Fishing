@@ -8,7 +8,9 @@
 
 void get_penguin_coordinates(GameState GS,  coordinates * penguin_coordinates)
 {
-    // Pull the gamestate values from GS into local variables
+    if (DEBUG) printf("********* GET_PENGUIN_COORDINATES\n");
+
+	// Pull the gamestate values from GS into local variables
     srand(time(NULL));
     int rows = GS.map_dims.r;
     int columns = GS.map_dims.c;

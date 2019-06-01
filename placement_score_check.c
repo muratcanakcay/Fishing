@@ -12,7 +12,8 @@
 void placement_score_check(GameState GS, coordinates* placement_coordinates)
 
 {
-	if (DEBUG) printf("placement_score_check executing\n");
+	if (DEBUG) printf("********* PLACEMENT_SCORE_CHECK\n");
+	
 	int rows = GS.map_dims.r;
     int columns = GS.map_dims.c;
 

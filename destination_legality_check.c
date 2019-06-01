@@ -5,7 +5,9 @@
 
 int destination_legality_check(GameState GS, coordinates given_coordinates, coordinates penguin_coordinates)
 {
-    int r, c;
+    if (DEBUG) printf("********* DESTINATION_LEGALITY_CHECK\n");
+
+	int r, c;
 
     // First check whether the destination cell is on a straight line path with the origin cell. This means it must be on the same row or the same column. If not return -1.
 

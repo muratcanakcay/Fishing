@@ -9,7 +9,9 @@
 
 int place_penguins(GameState GS)
 {
-    // Pull the gamestate values from GS into local variables
+	if (DEBUG) printf("********* PLACE_PENGUINS\n");
+	
+	// Pull the gamestate values from GS into local variables
     int total_players = GS.players[0].player_no;
     int total_penguins = (int)(GS.players[0].player_ID[0]);
     int current_player, current_penguin;

@@ -7,8 +7,9 @@
 
 int read_gamestate(GameState* GS_ptr)
 {
+	if (DEBUG) printf("********* READ_GAMESTATE\n");
 
-    FILE* fp; // declaration of the pointer to the file
+	FILE* fp; // declaration of the pointer to the file
     char ch, buffer[32];
     int r = 0, c = 0, n = 0, rows = 0, columns = 0, arr[500], peng_count[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 

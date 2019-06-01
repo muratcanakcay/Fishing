@@ -7,6 +7,7 @@ penguins : $(objects)
 main.o : process_parameters.h gamestate_generator.h place_penguins.h move_penguins.h data_structures.h print_map.h
 
 process_parameters.o : check_parameters.o data_structures.h
+check_parameters.o : data_structures.h
 
 gamestate_generator.o : player_generator.h map_generator.h read_gamestate.h data_structures.h
 player_generator.o : data_structures.h
@@ -18,8 +19,6 @@ print_map.o : data_structures.h
 update_map.o : data_structures.h
 placement_score_check.o : opening_score_check.h data_structures.h -lm
 choose_penguin.o : neighbour_score_check.h data_structures.h -lm
-   
-
 
 place_penguins.o : get_placement_coordinates.h update_map.h data_structures.h
 move_penguins.o : movement_possibility_check.h get_penguin_coordinates.h get_destination_coordinates.h update_map.h data_structures.h
@@ -32,6 +31,8 @@ destination_legality_check.o : data_structures.h
 get_placement_coordinates.o : placement_legality_check.h print_map.h data_structures.h
 get_penguin_coordinates.o : floe_availability_check.h print_map.h write_gamestate.h data_structures.h
 get_destination_coordinates.o : destination_legality_check.h print_map.h data_structures.h
+
+neighbour_score_check.o : data_structures.h
 
 
 

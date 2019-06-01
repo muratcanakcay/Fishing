@@ -5,7 +5,9 @@
 
 int floe_availability_check(GameState GS, int r, int c)
 {
-    int rows = GS.map_dims.r - 1;
+	if (DEBUG) printf("********* FLOE_AVAILABILITY_CHECK\n");
+
+	int rows = GS.map_dims.r - 1;
     int columns = GS.map_dims.c - 1;
     int i = 0;
 

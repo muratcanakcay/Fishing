@@ -14,7 +14,9 @@ int main(int argc, char* argv[])
 
 	// **** PROCESS COMMAND LINE PARAMETERS **** //
 
-    /* create parameters struct which holds the command line parameters */
+    if (DEBUG) printf("********* MAIN\n");
+
+	/* create parameters struct which holds the command line parameters */
     CommandLine parameters = {"", 0, "", ""};
     status_check = process_parameters(argc, argv, &parameters);
     if (status_check == -1) return(3); /* if there's a problem with the command line parameters exit program with error code 3 - internal error */

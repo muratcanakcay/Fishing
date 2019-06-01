@@ -7,7 +7,9 @@
 
 int gamestate_generator(GameState* GS_ptr)
 {
-    if (strcmp(GS_ptr->parameters.inputboardfile, "") == 0) /* an input filename is not given. Call for the player_generator function that will ask the users to input the player data (number of players, player IDs for each player and number of penguins) and create the players array containing the player structures containing the player data. When that's done call for the map_creator function that will ask for rows and columns, create the map array containing the ice_floe structures and randomly populate the ice_floes with fish, returning the ready-to-play map. Place both arrays in the GameState struct. */
+	if (DEBUG) printf("********* GAMESTATE_GENERATOR\n");
+
+	if (strcmp(GS_ptr->parameters.inputboardfile, "") == 0) /* an input filename is not given. Call for the player_generator function that will ask the users to input the player data (number of players, player IDs for each player and number of penguins) and create the players array containing the player structures containing the player data. When that's done call for the map_creator function that will ask for rows and columns, create the map array containing the ice_floe structures and randomly populate the ice_floes with fish, returning the ready-to-play map. Place both arrays in the GameState struct. */
     {
         GS_ptr->map_dims.r = 0;                        	 	// map dimensions
 		GS_ptr->map_dims.c = 0;

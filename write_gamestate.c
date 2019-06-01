@@ -7,6 +7,8 @@
 
 int write_gamestate(GameState GS, char* filename)
 {
+	if (DEBUG) printf("********* WRITE_GAMESTATE\n");
+	
 	FILE* fp;
 	int r, c, n;
 

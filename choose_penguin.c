@@ -8,7 +8,7 @@
 #include "data_structures.h"
 #include "neighbour_score_check.h"
 
-void choose_penguin(GameState GS, coordinates * penguin_coordinates)
+void choose_penguin(GameState GS, coordinates* penguin_coordinates)
 {
     // Getting the necessary variables from the GS
     int rows = GS.map_dims.r;
@@ -22,8 +22,10 @@ void choose_penguin(GameState GS, coordinates * penguin_coordinates)
     int max, maxcord1, maxcord2;
     max =0;
 
-    //printf("debug choosepenguin\n");
-    // Iterating through the map to find the all penguins belonging to the current player
+    if (DEBUG) printf("********* CHOOSE_PENGUIN\n");
+	if (DEBUG) printf("Choosing penguin coordinates...\n");
+
+	// Iterating through the map to find the all penguins belonging to the current player
     for (int r = 0; r < rows ; r++)
     {
         for (int c = 0; c < columns; c++)
@@ -87,7 +89,7 @@ void choose_penguin(GameState GS, coordinates * penguin_coordinates)
         //printf("\n dangerscore:%d",dangerscore[0]);
     //}
 
-    printf("\n Cell Selected = [%d][%d]\n",maxcord1+1, maxcord2+1);
+    if (DEBUG) printf("Coordinates selected = [%d][%d] with score %d\n",maxcord1+1, maxcord2+1, max);
 
      //Passing the coordinates of the selected penguin to the pointer
      penguin_coordinates->r = maxcord1;

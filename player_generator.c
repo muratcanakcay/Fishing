@@ -5,7 +5,9 @@
 
 player* player_generator(CommandLine parameters)
 {
-    int p, n;
+	if (DEBUG) printf("********* PLAYER_GENERATOR\n");
+
+	int p, n;
 
     /* interactive mode: ask for the number of players and the number of penguins */
 

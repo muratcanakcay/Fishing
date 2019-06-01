@@ -6,16 +6,7 @@
 
 int opening_score_check(int fish)
 {
-    if (fish==0)
-    {
-        return 0;
-    }
-    if (fish==1)
-    {
-        return 2;
-    }
-    else
-    {
-        return 3;
-    }
+	if (fish==0) return 0;
+    if (fish==1) return 2;
+    return 3;
 }

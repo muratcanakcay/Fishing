@@ -12,7 +12,9 @@
 
 int move_penguins(GameState GS)
 {
-    // Pull the gamestate values from GS into local variables
+	if (DEBUG) printf("********* MOVE_PENGUINS\n");
+
+	// Pull the gamestate values from GS into local variables
     int rows = GS.map_dims.r;
     int columns = GS.map_dims.c;
     int total_players = GS.players[0].player_no;

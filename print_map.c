@@ -6,7 +6,9 @@
 
 void print_map(GameState GS)
 {
-    // Pull the gamestate values from GS into local variables
+	if (DEBUG) printf("********* PRINT_MAP\n");
+
+	// Pull the gamestate values from GS into local variables
     int rows = GS.map_dims.r;
     int columns = GS.map_dims.c;
     int current_player = GS.players[0].player_score;

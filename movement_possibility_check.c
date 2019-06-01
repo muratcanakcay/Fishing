@@ -8,7 +8,9 @@
 
 int movement_possibility_check(GameState GS)
 {
-    // Pull the gamestate values from GS into local variables
+	if (DEBUG) printf("********* MOVEMENT_POSSIBILITY_CHECK\n");
+
+	// Pull the gamestate values from GS into local variables
     int rows = GS.map_dims.r;
     int columns = GS.map_dims.c;
     int player_to_check = GS.players[0].player_score; // current player

@@ -1,13 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "data_structures.h"
 
 /* This function checks the command_line parameters entered during the execution of the program for errors. It returns -1 if there are errors in the parameters and 0 if the parameters satisfy the requirements. */
 
 int check_parameters(int argc, char** argv)
 
 {
-    //first we check if the first argument is valid
+	if (DEBUG) printf("********* CHECK_PARAMETERS\n");
+
+	//first we check if the first argument is valid
 
     // is phase= missing or misspelled?
 
