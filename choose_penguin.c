@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include "data_structures.h"
 #include "neighbour_score_check.h"
+#include "print_map.h"
 
 void choose_penguin(GameState GS, coordinates* penguin_coordinates)
 {
@@ -24,6 +25,7 @@ void choose_penguin(GameState GS, coordinates* penguin_coordinates)
 
     if (DEBUG) printf("********* CHOOSE_PENGUIN\n");
 	if (DEBUG) printf("Choosing penguin coordinates...\n");
+	if (DEBUG) print_map(GS);
 
 	// Iterating through the map to find the all penguins belonging to the current player
     for (int r = 0; r < rows ; r++)

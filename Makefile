@@ -16,9 +16,9 @@ read_gamestate.o : player_generator.h data_structures.h
 write_gamestate.o: data_structures.h
 
 print_map.o : data_structures.h
-update_map.o : data_structures.h
+update_map.o : data_structures.h print_map.h
 placement_score_check.o : opening_score_check.h data_structures.h -lm
-choose_penguin.o : neighbour_score_check.h data_structures.h -lm
+choose_penguin.o : neighbour_score_check.h print_map.h data_structures.h -lm
 
 place_penguins.o : get_placement_coordinates.h update_map.h data_structures.h
 move_penguins.o : movement_possibility_check.h get_penguin_coordinates.h get_destination_coordinates.h update_map.h data_structures.h

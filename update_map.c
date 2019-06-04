@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "data_structures.h"
+#include "print_map.h"
 
 /* This function receives the GS structure, the penguin_coordinates and the destination_coordinates. The values are assumed to be valid. Any checks should be conducted before passing the coordinates to this function since this function does not carry out any checks and just updates the map. Both penguin_coordinates and destination_coordinates and also the player_score are updated. In the placement phase, the penguin_coordinates is passed as (-1, -1) so only the arrival cell and player_score are updated. */
 
 int update_map(GameState GS, coordinates penguin_coordinates, coordinates destination_coordinates)
 {
 	if (DEBUG) printf("********* UPDATE_MAP\n");
+	if (DEBUG) print_map(GS);
 
 	int r, c, current_player = GS.players[0].player_score;
 

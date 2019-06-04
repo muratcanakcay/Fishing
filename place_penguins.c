@@ -33,7 +33,7 @@ int place_penguins(GameState GS)
 
 			if (strcmp (GS.parameters.phase_mark, "placement") == 0)
         		placement_score_check(GS, &placement_coordinates);
-				// Computer decides where to place
+				exit(0);// Computer decides where to place
 
 // for pve mode
 

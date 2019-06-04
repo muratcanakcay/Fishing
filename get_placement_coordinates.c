@@ -42,7 +42,7 @@ void get_placement_coordinates(GameState GS, coordinates * placement_coordinates
       				;
 
 			if (DEBUG) printf("the row number entered is %d\n", r);
-        } while (r < 1 || r > rows || scan_result == 0);
+        } while (r < 1 || r > rows);
 
         // Ask for the column# to place the penguin.
         do

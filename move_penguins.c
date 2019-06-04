@@ -26,7 +26,9 @@ int move_penguins(GameState GS)
         for(current_player = 1; current_player <= total_players; current_player++)
         {
             // Update current player in GS.
-            GS.players[0].player_score = current_player;
+			// if (strcmp (GS.parameters.phase_mark, "placement") != 0)
+			printf("Currentplayer old valu: %d\n", GS.players[0].player_score);
+			GS.players[0].player_score = current_player;
 
             /* It's current_player's turn. First we check if current_player has a possible move to make. i.e. it has a penguin on the map that can move. We use movement_possibility_check function for this. The function returns 1 if the current_player has a penguin that can make a move and a 0 if not: */
 
@@ -42,9 +44,9 @@ int move_penguins(GameState GS)
 
 
 				// for autonomous mode
-				if (strcmp (GS.parameters.phase_mark, "placement") == 0)
+				if (strcmp (GS.parameters.phase_mark, "movement") == 0)
 					choose_penguin(GS, &penguin_coordinates);
-					// Computer decides where to place
+					// Computer decides which penguin to move
 
 				// for pve mode
 				if (strcmp (GS.parameters.phase_mark, "pve") == 0	&& current_player == 1)

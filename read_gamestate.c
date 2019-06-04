@@ -97,7 +97,7 @@ int read_gamestate(GameState* GS_ptr)
         }
     }
 
-	bzero(buffer, 32); // empty the buffer
+	memset(buffer, 0, 32); // empty the buffer
 
     /* Now that the dimensions of the map are read from file we create the map array based on these dimensions, and continue parsing the file and fill in the map array with fish and player data until we reach player ID. */
 
@@ -152,7 +152,7 @@ int read_gamestate(GameState* GS_ptr)
 		while (ch == ' ') ch = getc(fp); // jump over the spaces at end of line
 
 		/* if the line has more columns then declared in the first line of the file, then file has an error. display the error message and return 2 */
-		if (ch != '\n')
+		if (ch != '\n' && ch != EOF)
 		{
 			printf("Error reading file at row: %d.\nThe row has more columns than declared in the first line of the file. \n\n%s\n", r + 1, FILE_ERROR_2);
 			return 2;
@@ -332,8 +332,8 @@ int read_gamestate(GameState* GS_ptr)
 	GS_ptr->players = players;   					// players array
 	GS_ptr->map = map;  							// map array
 
-	bzero(buffer, 32); // empty the buffer
-	bzero(arr, 500); // empty array
+	memset(buffer, 0, 32); // empty the buffer
+	memset(arr, 0, 500); // empty array
 	fclose(fp); // close file
 
 	printf("read file completed\n");
