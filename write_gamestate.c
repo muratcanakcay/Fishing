@@ -12,8 +12,10 @@ int write_gamestate(GameState GS, char* filename)
 	FILE* fp;
 	int r, c, n;
 
-	if (filename == "")
-		strcpy(filename, GS.parameters.inputboardfile);
+//	if (filename == "")
+//		strcpy(filename, GS.parameters.inputboardfile);
+
+	if (DEBUG) printf("Writing to file '%s'\n", filename);
 
 	fp = fopen(filename, "w"); // open or create file for writing
 
@@ -27,6 +29,28 @@ int write_gamestate(GameState GS, char* filename)
 				fprintf(fp, "%d%d ", GS.map[r][c].fish, GS.map[r][c].penguin_owner);
 			fprintf(fp, "\n");
 		}
+
+	// *debug*
+//	if (DEBUG)
+//	{
+//        printf("This player's player_no is %d\n", GS.players[0].player_score);
+//		printf("\nTotal no of players: %d\n", GS.players[0].player_no);
+//		printf("Total no of penguins per player: %d\n", GS.players[0].player_ID[0]);
+//		printf("Total no of players that can move: %d\n\n", GS.players[0].movement_possible);
+//
+//		for (n = 1; n <= GS.players[0].player_no; n++)
+//		{
+//			printf("Player no: %d\n", GS.players[n].player_no);
+//			printf("Name: %s\n", GS.players[n].player_ID);
+//			printf("Score: %d\n", GS.players[n].player_score);
+//			printf("Movement possible?: %d\n", GS.players[n].movement_possible);
+//
+//		}
+//
+//		printf("Total no of players to write to file: %d", GS.players[0].player_no);
+//	}
+	// *end of debug*
+
 
 	/* print the player data to file */
 	for (n = 1; n <= GS.players[0].player_no; n++)

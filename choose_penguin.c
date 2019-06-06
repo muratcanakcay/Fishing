@@ -8,6 +8,7 @@
 #include "data_structures.h"
 #include "neighbour_score_check.h"
 #include "print_map.h"
+#include "floe_availability_check.h"
 
 void choose_penguin(GameState GS, coordinates* penguin_coordinates)
 {
@@ -25,7 +26,8 @@ void choose_penguin(GameState GS, coordinates* penguin_coordinates)
 
     if (DEBUG) printf("********* CHOOSE_PENGUIN\n");
 	if (DEBUG) printf("Choosing penguin coordinates...\n");
-	if (DEBUG) print_map(GS);
+//	if (DEBUG) print_map(GS);
+	if (DEBUG) printf("Current player: %d", current_player);
 
 	// Iterating through the map to find the all penguins belonging to the current player
     for (int r = 0; r < rows ; r++)
@@ -68,6 +70,7 @@ void choose_penguin(GameState GS, coordinates* penguin_coordinates)
 
 
         dangerscore[i] = fishscore + neighbourscore;
+        if (floe_availability_check(GS, penguins[i].r, penguins[i].c) == 0) dangerscore[i] = 0;
 
     }
     // storing the coordinates of the chosen penguin in maxcord1 and maxcord2
@@ -81,10 +84,6 @@ void choose_penguin(GameState GS, coordinates* penguin_coordinates)
 
         }
     }
-
-
-
-
 
     //for (int i = 0; i < penguins_per_player; i++)
     //{

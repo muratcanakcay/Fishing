@@ -7,6 +7,7 @@
 #include "get_destination_coordinates.h"
 #include "update_map.h"
 #include "choose_penguin.h"
+#include "write_gamestate.h"
 
 /* In this function, each player who has a possible move is asked to pick a penguin and choose a destination cell for that penguin. Then the legality of that move is checked and if the move is legal the penguin is taken to the new cell, i.e. the map and the scoreboard is updated. Then the loop repeats for the next player. */
 
@@ -27,8 +28,10 @@ int move_penguins(GameState GS)
         {
             // Update current player in GS.
 			// if (strcmp (GS.parameters.phase_mark, "placement") != 0)
-			printf("Currentplayer old valu: %d\n", GS.players[0].player_score);
-			GS.players[0].player_score = current_player;
+			if (DEBUG) printf("Currentplayer old value: %d\n", GS.players[0].player_score);
+			if (strcmp (GS.parameters.phase_mark, "movement") == 0) current_player = GS.players[0].player_score;
+			else GS.players[0].player_score = current_player;
+			if (DEBUG) printf("Currentplayer new value: %d\n", GS.players[0].player_score);
 
             /* It's current_player's turn. First we check if current_player has a possible move to make. i.e. it has a penguin on the map that can move. We use movement_possibility_check function for this. The function returns 1 if the current_player has a penguin that can make a move and a 0 if not: */
 
@@ -71,23 +74,30 @@ int move_penguins(GameState GS)
 
                 get_destination_coordinates(GS, &destination_coordinates, penguin_coordinates);
 
+
+
                 /* Now that the a valid penguin and a legal destination are selected we store the destination's coordinates and make the move, i.e. update the map. */
 
                 update_map(GS, penguin_coordinates, destination_coordinates);
 
+				if (strcmp (GS.parameters.phase_mark, "movement") == 0)
+				{
+					printf("Penguin at (%d,%d) moving to (%d,%d)\n", penguin_coordinates.r, penguin_coordinates.c,
+						   destination_coordinates.r, destination_coordinates.c);
+					write_gamestate(GS, GS.parameters.outputboardfile);
+					return 0;
+				}
+
+
                 /* Now the board and scoreboard are updated. so it's the next player's turn. */
             }
 
-            // THIS PART SEEMS TO BE UNNECESSARY. MAYBE BETTER TO REFLECT THE PLAYERS THAT CANNOT MOVE ON THE SCOREBOARD??
+            else
+			{
+            	if (DEBUG) printf("This player does not have a penguin that can move");
+            	return 1;
+            }
 
-            // In this case, apparently the player does not have a penguin that can move so we return 0 and move on to the next player. This check can also be made outside this main loop. Open to improvement.
-
-            // else
-            // {
-            //     // THIS NEEDS A PRINTMAP FUNCTION TO PRITN AT THE CORRECT POSITION ON THE SCREEN
-            //     printf("This player cannot move. Press ENTER.\n");
-            //     getchar();
-            // }
         }
     }
 }

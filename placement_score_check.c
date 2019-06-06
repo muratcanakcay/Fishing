@@ -87,25 +87,25 @@ void placement_score_check(GameState GS, coordinates* placement_coordinates)
 
 	//Printing the placement_scores of each cell
 
-	if (DEBUG)
-	{
-		printf("printing placement score chart\n");
-		printf("\n\n");
-
-		for (int i = 0; i < rows; i++)
-	    {
-	        printf("   ");
-			for (int j = 0; j < columns; j++)
-	        {
-				if (placement_scores[i][j] < 10) printf("0");
-				if (placement_scores[i][j] == max_score)
-					printf("\033[1;33m"); //Set the text to the color bold yellow
-	            printf("%d ", placement_scores[i][j]);
-				printf("\033[0m"); //Reset the text to default color
-	        }
-	        printf("\n");
-		}
-    }
+//	if (DEBUG)
+//	{
+//		printf("printing placement score chart\n");
+//		printf("\n\n");
+//
+//		for (int i = 0; i < rows; i++)
+//	    {
+//	        printf("   ");
+//			for (int j = 0; j < columns; j++)
+//	        {
+//				if (placement_scores[i][j] < 10) printf("0");
+//				if (placement_scores[i][j] == max_score)
+//					printf("\033[1;33m"); //Set the text to the color bold yellow
+//	            printf("%d ", placement_scores[i][j]);
+//				printf("\033[0m"); //Reset the text to default color
+//	        }
+//	        printf("\n");
+//		}
+//    }
 
 	if (DEBUG) printf("The placement is : (%d, %d) with score %d\n", max_score_coordinates.r + 1, max_score_coordinates.c + 1, max_score);
 

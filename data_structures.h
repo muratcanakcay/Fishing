@@ -1,4 +1,4 @@
-#define ID "The_Penguin_Captains"  // Our team's ID
+#define ID "Christian"  // Our team's ID
 #define DEBUG_DATA_FILE "test.txt"
 #define AI_RANDOM_MOVE "1"
 #define DEBUG "1"

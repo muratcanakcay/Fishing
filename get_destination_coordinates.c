@@ -81,10 +81,20 @@ void get_destination_coordinates(GameState GS, coordinates* destination_coordina
 
 	} while (destination_legality != 1);
 
+    if (AI_RANDOM_MOVE && strcmp(GS.parameters.phase_mark, "movement") == 0) do // select coordinates randomly
+        {
+            r = rand()%rows + 1;
+            c = rand()%columns + 1;
+            coordinates given_coordinates = {r-1, c-1};
+            destination_legality = destination_legality_check(GS, given_coordinates, penguin_coordinates);
+
+        } while (destination_legality != 1);
+
+
 
    // printf("\n");
     // Now the player has selected a destination cell which is valid. We store the coordinates of the destination cell and exit.
     destination_coordinates->r = r-1;
     destination_coordinates->c = c-1;
-
+    if (DEBUG) printf("Exiting ********GET DESTINATION COORDINATES");
 }

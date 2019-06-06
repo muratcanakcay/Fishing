@@ -3,6 +3,7 @@
 #include <string.h>
 #include "data_structures.h"
 #include "player_generator.h"
+#include "write_gamestate.h"
 
 /* This function reads the gamestate data from a given file and populates the GameState struct with that data. If there are any errors in the file it displays appropriate messages and returns the error code -1. If the file is read without errors it returns 0 */
 
@@ -23,7 +24,8 @@ int read_gamestate(GameState* GS_ptr)
 
 	*/
 
-	strcpy(buffer, ""); // initialize buffer to ""
+//	strcpy(buffer, ""); // initialize buffer to ""
+    memset(buffer, 0, 32); // empty the buffer
 	fp = fopen(GS_ptr->parameters.inputboardfile, "r"); // open file for reading
 
 	if (fp == NULL) // if the input file does not exist
@@ -36,20 +38,27 @@ int read_gamestate(GameState* GS_ptr)
 
 	/* read the dimensions of the map from line 1 of the file */
 
-	if (DEBUG) printf("Reading dimensions from line 1\n");
+	if (DEBUG) printf("Reading dimensions of the map from line 1\n");
 
     while (1)
     {
         ch = getc(fp);
 
+//        if (DEBUG) printf("Obtained character: '%c' Buffer: '%s'\n", ch, buffer);
+
+
         if (rows == 0 || columns == 0)
         {
 
-            if (ch == ' ' || ch == '\n')
+            if (ch == ' ' || ch == '\r' || ch == '\n')
             {
-				while (c == 2 && ch == ' ') ch = getc(fp); /* jump over all of the spaces (if any) after the second value is read */
+                if (ch == '\r') ch = getc(fp);
 
-				if (!(c == 2 && ch == '\n') &&
+                while (c == 2 && ch == ' ') ch = getc(fp); /* jump over all of the spaces (if any) after the second value is read */
+
+                if (ch == '\r') ch = getc(fp);
+
+                if (!(c == 2 && ch == '\n') &&
 					(strlen(buffer) == 0 ||
 					(c == 0 && ch == '\n') ||
 					c == 2))
@@ -59,15 +68,15 @@ int read_gamestate(GameState* GS_ptr)
 				However if that is NOT the case, AND - if the first line starts with a space or line break OR if there's only 1 value given on the first line OR if there are more than 2 values given on the first line THEN display error message and return 2 */
 
 				{
-					printf("%s\n", FILE_ERROR_1);
+                	printf("%s\n", FILE_ERROR_1);
 					return 2;
 				}
 
 				/* there's no error so put the value in the buffer into the array, clear the buffer and move to the next position of the array */
 
 				arr[c] = atoi(buffer);
-                c++;
-                strcpy(buffer, "");
+				c++;
+                memset(buffer, 0, 32); // empty the buffer
                 r = 0;
             }
 
@@ -80,7 +89,7 @@ int read_gamestate(GameState* GS_ptr)
 				}
 				else /* if ch is not a numeral or the first digit is 0 then display error message and return 2 */
 				{
-					printf("%s\n", FILE_ERROR_1);
+                    printf("%s\n", FILE_ERROR_1);
 					return 2;
 				}
             }
@@ -88,16 +97,17 @@ int read_gamestate(GameState* GS_ptr)
 
         /* when the first two values are read from the file, pass the values to row and column variables and create the map array. */
 
-        if (ch == '\n')
+        if (ch == '\r' || ch == '\n')
         {
+            if (ch == '\r') getc(fp);
             rows = arr[0];
             columns = arr[1];
-            printf("Rows:%d Columns:%d\n\n", rows, columns);
+            if (DEBUG) printf("Dimensions acquired-> Rows:%d Columns:%d\n\n", rows, columns);
             break;
         }
     }
 
-	memset(buffer, 0, 32); // empty the buffer
+  	memset(buffer, 0, 32); // empty the buffer
 
     /* Now that the dimensions of the map are read from file we create the map array based on these dimensions, and continue parsing the file and fill in the map array with fish and player data until we reach player ID. */
 
@@ -143,29 +153,35 @@ int read_gamestate(GameState* GS_ptr)
 
             map[r][c].penguin_owner = ch - '0'; // update map array
 
-			/* if a penguin is encountered increase the penguion count of that penguin's owner by 1 */
+			/* if a penguin is encountered increase the penguin count of that penguin's owner by 1 */
 			if (ch - '0' > 0) peng_count[ch - '0']++;
 
-			ch = getc(fp);   // to jump over the single space between columns
+			ch = getc(fp);   // to jump over the single space between columns - also this is the end of line
         }
 
 		while (ch == ' ') ch = getc(fp); // jump over the spaces at end of line
 
+
 		/* if the line has more columns then declared in the first line of the file, then file has an error. display the error message and return 2 */
-		if (ch != '\n' && ch != EOF)
+		if (ch != '\r' && ch != '\n' && ch != EOF)
 		{
 			printf("Error reading file at row: %d.\nThe row has more columns than declared in the first line of the file. \n\n%s\n", r + 1, FILE_ERROR_2);
 			return 2;
 		}
+
+        if (ch == '\r') ch = getc(fp);
     }
 
 	if (DEBUG) // print the map that was read from the file
-    	for (r = 0; r < rows; r++)
-    	{
-	        for (c = 0; c < columns; c++)
-	            printf("%d%d ", map[r][c].fish, map[r][c].penguin_owner);
-	        printf("\n");
-	    }
+    {
+		printf("Completed reading map data.\n");
+		printf("\nPrinting map...\n");
+        for (r = 0; r < rows; r++) {
+            for (c = 0; c < columns; c++)
+                printf("%d%d ", map[r][c].fish, map[r][c].penguin_owner);
+            printf("\n");
+        }
+    }
 
     // Now the map is transferred to the map array. We continue parsing the file to transfer the player information present in the file to the player array.
 
@@ -215,7 +231,7 @@ int read_gamestate(GameState* GS_ptr)
 	const char s[2] = " ";
 	char *token;
 	char line[256];
-	n = 1;
+
 
 	if (DEBUG) printf("Reading players data from file...\n");
 
@@ -245,7 +261,8 @@ int read_gamestate(GameState* GS_ptr)
 	        {
 	            temp[n].player_score = atoi(token);
 				temp[n].movement_possible = 1;
-	            temp[0].movement_possible = ++temp[0].player_no;
+				temp[0].player_no += 1;
+	            temp[0].movement_possible = temp[0].player_no;
 	            c = 0;
 	            n++; // Proceed to the next player
 			}
@@ -265,7 +282,8 @@ int read_gamestate(GameState* GS_ptr)
 	{
 		printf("Adding our team to the list as player #%d\n", n);
 
-		n = temp[0].player_score = temp[0].player_no + 1;
+		n = temp[0].player_no + 1;
+		temp[0].player_score = temp[0].player_no + 1;
 
 		strcpy(temp[n].player_ID, ID);
 		temp[n].player_no = temp[0].player_no + 1;
@@ -281,18 +299,18 @@ int read_gamestate(GameState* GS_ptr)
 
 
 	// *debug*
-		printf("\nTotal no of players: %d\n", temp[0].player_no);
-		printf("Total no of penguins per player: %d\n", temp[0].player_ID[0]);
-	    printf("Total no of players that can move: %d\n\n", temp[0].movement_possible);
-
-	    for (n = 1; n <= temp[0].player_no; n++)
-	    {
-	        printf("Player no: %d\n", temp[n].player_no);
-	        printf("Name: %s\n", temp[n].player_ID);
-	        printf("Score: %d\n", temp[n].player_score);
-	        printf("Movement possible?: %d\n", temp[n].movement_possible);
-			printf("Penguins on board: %d\n\n", peng_count[n]);
-	    }
+//		printf("\nTotal no of players: %d\n", temp[0].player_no);
+//		printf("Total no of penguins per player: %d\n", temp[0].player_ID[0]);
+//	    printf("Total no of players that can move: %d\n\n", temp[0].movement_possible);
+//
+//	    for (n = 1; n <= temp[0].player_no; n++)
+//	    {
+//	        printf("Player no: %d\n", temp[n].player_no);
+//	        printf("Name: %s\n", temp[n].player_ID);
+//	        printf("Score: %d\n", temp[n].player_score);
+//	        printf("Movement possible?: %d\n", temp[n].movement_possible);
+//			printf("Penguins on board: %d\n\n", peng_count[n]);
+//	    }
 	// *end of debug*
 
 	/* the reading of the players' data is completed at this stage. now if it's the movement phase we check that every player has the same number of penguins. otherwise the file has an error, so we display the error message and return 2 */
@@ -307,17 +325,6 @@ int read_gamestate(GameState* GS_ptr)
 		}
 	}
 
-	/* if it's the placement phase we check how many penguins should be placed and how many penguins we have on the board. if the numbers are equal we don't place a new penguin and just exit the program returning error code 1. */
-
-	if (strcmp(GS_ptr->parameters.phase_mark, "placement") == 0)
-	{
-		if (peng_count[temp[0].player_score] == GS_ptr->parameters.N)
-		{
-			printf("All penguins already placed\n");
-			return 1;
-		}
-	}
-
 	/* using the temporary players array of size 30, we create the actual array to be used with size equal to total number of players THIS SHOULD BE DIFFERENT IF THE MAP FILE ALREADY HAS OUR ID and PLAYER NO and OUR ID AND NO SHOULD BE ADDED AS THE LAST PLAYER IF IT DOESNT!!! */
 
 	player players[temp[0].player_no + 1];
@@ -329,14 +336,62 @@ int read_gamestate(GameState* GS_ptr)
 
 	GS_ptr->map_dims.r = rows;           			// map dimensions
 	GS_ptr->map_dims.c = columns;
-	GS_ptr->players = players;   					// players array
+
+
+	GS_ptr->players = malloc(sizeof(players));		// players array
+	memcpy(GS_ptr->players, players, sizeof(players));
+
+	GS_ptr->map = malloc(sizeof(map));
+	memcpy(GS_ptr->map, map, sizeof(map));
+
+//	for (int i = 0; i < r; i++)
+//	{
+//		GS_ptr->map[i] = malloc(sizeof(map[i]));
+//		memcpy(GS_ptr->map[i], map[i], sizeof(map[i]));
+//	}
+
 	GS_ptr->map = map;  							// map array
+
 
 	memset(buffer, 0, 32); // empty the buffer
 	memset(arr, 0, 500); // empty array
 	fclose(fp); // close file
 
-	printf("read file completed\n");
+	printf("Completed reading from file.\n");
+
+	if (DEBUG)
+	{
+
+		printf("\nTotal no of players: %d\n", GS_ptr->players[0].player_no);
+		printf("Total no of penguins per player: %d\n", GS_ptr->players[0].player_ID[0]);
+		printf("Total no of players that can move: %d\n\n", GS_ptr->players[0].movement_possible);
+
+		for (n = 1; n <= GS_ptr->players[0].player_no; n++)
+		{
+			printf("Player no: %d\n", GS_ptr->players[n].player_no);
+			printf("Name: %s\n", GS_ptr->players[n].player_ID);
+			printf("Score: %d\n", GS_ptr->players[n].player_score);
+			printf("Movement possible?: %d\n", GS_ptr->players[n].movement_possible);
+
+		}
+
+		printf("Total no of players to write to file: %d\n", GS_ptr->players[0].player_no);
+	}
+
+	/* if it's the placement phase we check how many penguins should be placed and how many penguins we have on the board. if the numbers are equal we don't place a new penguin and just exit the program returning error code 1. */
+
+	if (strcmp(GS_ptr->parameters.phase_mark, "placement") == 0)
+	{
+		if (peng_count[temp[0].player_score] == GS_ptr->parameters.N)
+		{
+			printf("This player has already placed all of its penguins.\n");
+			write_gamestate(*GS_ptr, GS_ptr->parameters.outputboardfile);
+			if (DEBUG) printf("Exiting ********* READ_GAMESTATE\n");
+			return 1;
+		}
+	}
+
+	if (DEBUG) printf("Exiting ********* READ_GAMESTATE\n");
 	return 0; // the file is transferred to memory without any errors
 
 }
