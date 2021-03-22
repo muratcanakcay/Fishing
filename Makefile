@@ -25,8 +25,7 @@ placement_score_check.o : opening_score_check.h data_structures.h -lm
 choose_penguin.o : floe_availability_check.h neighbour_score_check.h print_map.h data_structures.h -lm
 
 place_penguins.o : get_placement_coordinates.h update_map.h write_gamestate.h data_structures.h
-move_penguins.o : movement_possibility_check.h get_penguin_coordinates.h get_destination_coordinates.h update_map.h\
-data_structures.h write_gamestate.h
+move_penguins.o : movement_possibility_check.h get_penguin_coordinates.h get_destination_coordinates.h update_map.h data_structures.h write_gamestate.h
 
 placement_legality_check.o : data_structures.h
 movement_possibility_check.o : floe_availability_check.h data_structures.h
